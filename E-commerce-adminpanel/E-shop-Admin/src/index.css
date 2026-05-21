@@ -121,3 +121,115 @@
   outline: none;
   width: 400px;
 }
+.usericon{
+  gap: 10px;
+  height: 37px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+}
+
+.userimg{
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border: none;
+  background-color: #E8521A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.userdetails{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.userdetails h6{
+  font-size: 14px;
+  font-weight: 600;
+   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userdetails p{
+  font-size: 12px;
+  color: #717182;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 120px;
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ from login */
+.login-from{
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-from form{
+  width: 350px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-from h1{
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-from input{
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.login-from input:focus{
+  border-color: #E8521A;
+}
+
+.loginbtn{
+  display: flex;
+  gap: 10px;
+}
+
+.loginbtn button{
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.loginbtn button[type="submit"]{
+  background-color: #E8521A;
+  color: white;
+}
+
+.loginbtn button[type="button"]:focus{
+  background-color: #e5e7eb;
+  
+}
