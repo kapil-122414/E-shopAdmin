@@ -43,10 +43,12 @@ const Loginfromdata = ({
         />
 
         <div className="flex gap-5 loginbtn">
-          <button type="submit">{editfrom ? "Login" : "Edit"}</button>
+          <button type="submit" onClick={() => setEditfrom(false)}>
+            {!editfrom ? "login" : "Edit"}
+          </button>
 
-          {!editfrom && (
-            <button type="button" onClick={() => setEditfrom(true)}>
+          {editfrom && (
+            <button type="button" onClick={() => setEditfrom(false)}>
               Cancel
             </button>
           )}

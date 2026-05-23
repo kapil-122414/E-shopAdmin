@@ -3,7 +3,8 @@ import { createuser } from "../service/loginapi";
 import Cookie from "js-cookie";
 
 const useLoginform = () => {
-  const [editfrom, setEditfrom] = useState(true);
+    
+  const [editfrom, setEditfrom] = useState(false);
   const [islogin, setIslogin] = useState(!!Cookie.get("Token"));
   const [formData, setFormData] = useState({
     // username: "",

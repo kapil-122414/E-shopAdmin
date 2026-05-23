@@ -15,30 +15,34 @@ const App = () => {
     setFormData,
   } = useLoginform();
 
-  
-
   if (!islogin) {
     return (
       <Loginfromdata
-        editfrom={editfrom}
+        editfrom={true}
         setEditfrom={setEditfrom}
         formData={formData}
         setFormData={setFormData}
         register={register}
       />
     );
-  } else {
+  } 
     return (
       <div className="flex">
         <div>
           <Sidebar />
         </div>
         <div className="main-content">
-          <Navbar />
+          <Navbar
+            editfrom={editfrom}
+            setEditfrom={setEditfrom}
+            formData={formData}
+            setFormData={setFormData}
+            register={register}
+          />
         </div>
       </div>
     );
-  }
+  
 };
 
 export default App;

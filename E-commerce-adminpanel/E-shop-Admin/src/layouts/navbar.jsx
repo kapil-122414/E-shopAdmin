@@ -6,9 +6,7 @@ import Loginfromdata from "../froms/loginfrom";
 
 import useLoginform from "../Hooks/loginfrom";
 
-const Navbar = () => {
-  const { editfrom, setEditfrom, formData, setFormData, register } =
-    useLoginform();
+const Navbar = ({ editfrom, setEditfrom, formData, setFormData, register }) => {
   return (
     <>
       <div className="navbar">
@@ -37,19 +35,20 @@ const Navbar = () => {
 
             <div className="userdetails">
               <h6>kapil</h6>
-              <p>kapilkimar1222@dkfkd</p>
+              <p>{formData.Email}</p>
             </div>
           </div>
         </div>
       </div>
-
-     <Loginfromdata
-  editfrom={editfrom}
-  setEditfrom={setEditfrom}
-  formData={formData}
-  setFormData={setFormData}
-  register={register}
-/>
+      {editfrom && (
+        <Loginfromdata
+          editfrom={editfrom}
+          setEditfrom={setEditfrom}
+          formData={formData}
+          setFormData={setFormData}
+          register={register}
+        />
+      )}
     </>
   );
 };
