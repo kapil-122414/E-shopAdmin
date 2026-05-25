@@ -233,3 +233,64 @@
   background-color: #e5e7eb;
   
 }
+.logout:hover{
+ 
+  cursor: pointer;
+}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++DARK MODE ================= */
+
+.dark {
+  background-color: #111827;
+  color: white;
+}
+
+
+.dark .side-bar {
+  background-color: #111827;
+  color: white;
+}
+
+
+.dark .navbar {
+  background-color: #111827;
+  color: white;
+  border-bottom: 1px solid #374151;
+}
+
+
+.dark .navbar > div:nth-child(1) {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+}
+
+
+.dark .navbar input {
+  color: white;
+  background-color: transparent;
+}
+
+
+.dark .navbar input::placeholder {
+  color: #9ca3af;
+}
+
+
+.dark .userdetails p {
+  color: #d1d5db;
+}
+
+
+.dark .login-from form {
+  background-color: #1f2937;
+  color: white;
+}
+
+
+.dark .login-from input {
+  background-color: #111827;
+  color: white;
+  border: 1px solid #374151;
+}

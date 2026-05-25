@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import Cookies from "js-cookie";
 import {
   FaTachometerAlt,
   FaBox,
@@ -12,8 +14,18 @@ import {
   FaBars,
 } from "react-icons/fa";
 
-const Sidebar = () => {
+const Sidebar = ({ formData, setIslogin, islogin }) => {
   const [open, setOpen] = useState(false);
+
+
+
+  const logout = () => {
+    Cookies.remove("Token");
+
+    console.log("remove token");
+    setIslogin(false);
+  };
+
   return (
     <>
       <div className="menu-icon">
@@ -26,7 +38,9 @@ const Sidebar = () => {
           <h1>E-Shop Admin</h1>
         </div>
         <div className="">
-          <div>
+
+          
+          <div >
             <FaTachometerAlt className="" />
             <h3>Dashboard</h3>
           </div>
@@ -59,7 +73,7 @@ const Sidebar = () => {
             <h3>Setting</h3>
           </div>
         </div>
-        <div className="logout">
+        <div onClick={logout} className="logout">
           <FaSignOutAlt />
           <h3>logout</h3>
         </div>

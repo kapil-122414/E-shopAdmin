@@ -16,6 +16,7 @@ const Loginfromdata = ({
   };
 
   const onhandsubmit = async (e) => {
+    setEditfrom(false);
     e.preventDefault();
     await register();
   };
@@ -23,7 +24,7 @@ const Loginfromdata = ({
   return (
     <div className="login-from">
       <form onSubmit={onhandsubmit}>
-        <h1>{editfrom ? "Login Form" : "Edit Form"}</h1>
+        <h1>{editfrom ? "Edit Form" : "Login Form"}</h1>
         <input
           type="email"
           name="Email"
@@ -43,9 +44,7 @@ const Loginfromdata = ({
         />
 
         <div className="flex gap-5 loginbtn">
-          <button type="submit" onClick={() => setEditfrom(false)}>
-            {!editfrom ? "login" : "Edit"}
-          </button>
+          <button type="submit">{editfrom ? "Edit" : "login"}</button>
 
           {editfrom && (
             <button type="button" onClick={() => setEditfrom(false)}>

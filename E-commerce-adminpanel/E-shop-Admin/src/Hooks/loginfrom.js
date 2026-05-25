@@ -3,8 +3,8 @@ import { createuser } from "../service/loginapi";
 import Cookie from "js-cookie";
 
 const useLoginform = () => {
-    
   const [editfrom, setEditfrom] = useState(false);
+  const [activePage, setActivepage] = useState("Dashboard");
   const [islogin, setIslogin] = useState(!!Cookie.get("Token"));
   const [formData, setFormData] = useState({
     // username: "",
@@ -24,8 +24,6 @@ const useLoginform = () => {
         Cookie.set("Role", res.data.Role);
 
         setIslogin(true);
-        console.log("islogin set to true");
-        
       }
     } catch (error) {
       console.log(error);
@@ -41,6 +39,8 @@ const useLoginform = () => {
 
     formData,
     setFormData,
+    activePage,
+    setActivepage,
     register,
   };
 };
