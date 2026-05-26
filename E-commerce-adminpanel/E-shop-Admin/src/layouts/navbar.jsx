@@ -4,7 +4,15 @@ import { FaBell, FaUserCircle, FaSun, FaSearch, FaMoon } from "react-icons/fa";
 
 import Loginfromdata from "../froms/loginfrom";
 
-const Navbar = ({ editfrom, setEditfrom, formData, setFormData, register }) => {
+const Navbar = ({
+  editfrom,
+  setEditfrom,
+  formData,
+  setFormData,
+  register,
+  search,
+  setSearch,
+}) => {
   const [dark, setdark] = useState(false);
 
   useEffect(() => {
@@ -24,6 +32,8 @@ const Navbar = ({ editfrom, setEditfrom, formData, setFormData, register }) => {
           <input
             type="text"
             placeholder="Search products, orders, customers..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             className="bg-transparent outline-none"
           />
         </div>

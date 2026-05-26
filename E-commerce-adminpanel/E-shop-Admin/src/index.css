@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
   }
 .side-bar>div:nth-child(2)>div{
   display: flex;
@@ -46,13 +47,10 @@
   text-align: center;
   gap: 10px;
   padding: 10px 10px;
-}
-.side-bar>div:nth-child(2)>div:hover{
-  background-color:#E8521A ;
-  border: none;
-  border-radius: 10px;
   cursor: pointer;
+  
 }
+
 .logout{
   display: flex;
   align-items: center;
@@ -102,12 +100,13 @@
 /* ==========================navbar================== */
 .main-content{
   flex: 1;
+  overflow: hidden;
 }
 .navbar{
   display: flex;
   justify-content: space-between;
   text-align: center;
-  padding: 12px 30px;
+  padding: 10px 30px;
   border-bottom: 1px solid  #0000001A;
 }
 .navbar >div:nth-child(1){
@@ -171,7 +170,7 @@
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ from login */
-.login-from{
+.login-from ,.categoryfrom{
   position: fixed;
   inset: 0;
   background-color: rgba(0,0,0,0.4);
@@ -181,7 +180,7 @@
   align-items: center;
 }
 
-.login-from form{
+.login-from form,.categoryfrom from{
   width: 350px;
   background-color: white;
   padding: 25px;
@@ -198,7 +197,7 @@
   font-weight: 600;
 }
 
-.login-from input{
+.login-from input,.categoryfrom input{
   padding: 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
@@ -206,7 +205,7 @@
   font-size: 14px;
 }
 
-.login-from input:focus{
+.login-from input:focus,.categoryfrom input:focus{
   border-color: #E8521A;
 }
 
@@ -281,7 +280,10 @@
 .dark .userdetails p {
   color: #d1d5db;
 }
-
+.dark .main-content1{
+  background-color: #1f2937;
+  color: white;
+}
 
 .dark .login-from form {
   background-color: #1f2937;
@@ -294,3 +296,43 @@
   color: white;
   border: 1px solid #374151;
 }
+.dark .all-cards{
+  background-color: #455264;
+  color: white;
+}
+/* 222222222222222222222222233444444444444444444444444444444444433         main-content1 */
+.main-content1{
+  padding: 10px 30px;
+  overflow-y: auto;
+
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++categories++++++++++++++++++++++++++++++++ */
+.categories{
+  flex: 1;
+  height:100%;
+ 
+  
+}
+.categoy-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.categoy-head>div:nth-child(2){
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #E8521A;
+  cursor: pointer;
+}
+.all-cards{
+  margin: 20px 0px;
+  margin-bottom: 60px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #0000001A;
+  background-color: #FFFFFF;
+}
+
