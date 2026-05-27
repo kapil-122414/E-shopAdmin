@@ -1,9 +1,9 @@
 import React from "react";
 
-const Categorycard = () => {
+const Categorycard = ({ item }) => {
   return (
     <div className="category-cards">
-      <h1>hello</h1>
+      <h1>{item.Categoryname}</h1>
       <h2>bro</h2>
     </div>
   );

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Categoryfrom from "../froms/categoryfrom";
 import Categoryhooks from "../Hooks/categoryhooks";
 import { categoryget } from "../service/categoryapi";
 import Categorycard from "../cards/categorycard";
 const Categories = () => {
-  const { from, setFrom, formdata, setFormdata, getdata } = Categoryhooks();
+  const { from, setFrom, formdata, setFormdata, getdata, categoryies } =
+    Categoryhooks();
 
   return (
     <div className="categories">
@@ -30,9 +31,13 @@ const Categories = () => {
           </select>
         </div>
         <div className="categorycard">
-          <Categorycard />
-
-          <Categorycard />
+          {categoryies.map((item) => {
+            return (
+              <div key={item._id}>
+                <Categorycard item={item} />
+              </div>
+            );
+          })}
         </div>
       </div>
 
