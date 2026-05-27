@@ -1,9 +1,11 @@
 import React from "react";
 import Categoryfrom from "../froms/categoryfrom";
 import Categoryhooks from "../Hooks/categoryhooks";
+import { categoryget } from "../service/categoryapi";
+import Categorycard from "../cards/categorycard";
 const Categories = () => {
-  const { from, setFrom } = Categoryhooks();
-  console.log(from);
+  const { from, setFrom, formdata, setFormdata, getdata } = Categoryhooks();
+
   return (
     <div className="categories">
       <div className="categoy-head">
@@ -18,9 +20,30 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className="all-cards"></div>
+      <div className="all-cards">
+        <div className="all-cards-search">
+          <input type="text" placeholder="search categorys ..." />
+          <select>
+            <option>status</option>
+            <option>active</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+        <div className="categorycard">
+          <Categorycard />
 
-      {from && <Categoryfrom />}
+          <Categorycard />
+        </div>
+      </div>
+
+      {from && (
+        <Categoryfrom
+          from={from}
+          setFrom={setFrom}
+          formdata={formdata}
+          setFormdata={setFormdata}
+        />
+      )}
     </div>
   );
 };

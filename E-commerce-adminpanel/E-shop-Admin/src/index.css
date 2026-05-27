@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 @import "tailwindcss";
-*{
-  font-family: 'Inter', sans-serif;
+* {
+  font-family: "Inter", sans-serif;
   padding: 0;
   margin: 0;
 }
 /* =================================sidebar =========================================================== */
 
-:root{
-  --sidetextcolor:#FFFFFF;
-  --side-back:#1A1A2E;
+:root {
+  --sidetextcolor: #ffffff;
+  --side-back: #1a1a2e;
 }
 
-.side-bar{
+.side-bar {
   color: var(--sidetextcolor);
   background-color: var(--side-back);
   width: 250px;
@@ -21,37 +21,33 @@
   min-height: 100vh;
   flex-shrink: 0;
 }
-.side-bar>div>h1{
+.side-bar > div > h1 {
   font-size: larger;
   font-weight: 700;
-
 }
-.side-bar.active{
+.side-bar.active {
   left: 0;
 }
-.side-bar>div:nth-child(1){
-  padding:14px 30px;
-  border-bottom: 1px solid #FFFFFF1A;
-
+.side-bar > div:nth-child(1) {
+  padding: 14px 30px;
+  border-bottom: 1px solid #ffffff1a;
 }
-.side-bar>div:nth-child(2){
+.side-bar > div:nth-child(2) {
   padding: 10px 30px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  
-  }
-.side-bar>div:nth-child(2)>div{
+}
+.side-bar > div:nth-child(2) > div {
   display: flex;
   align-items: center;
   text-align: center;
   gap: 10px;
   padding: 10px 10px;
   cursor: pointer;
-  
 }
 
-.logout{
+.logout {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -60,31 +56,30 @@
   margin-bottom: 32px;
 }
 
-.menu-icon{
+.menu-icon {
   display: none;
 }
 
-.overlay{
+.overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 99;
 }
 
-.menu-icon{
+.menu-icon {
   display: none;
 }
 
-@media(max-width:770px){
-
-  .menu-icon{
+@media (max-width: 770px) {
+  .menu-icon {
     display: block;
     font-size: 24px;
     padding: 10px;
     cursor: pointer;
   }
 
-  .side-bar{
+  .side-bar {
     position: fixed;
     top: 0;
     left: -100%;
@@ -93,34 +88,34 @@
     transition: 0.3s;
   }
 
-  .side-bar.active{
+  .side-bar.active {
     left: 0;
   }
 }
 /* ==========================navbar================== */
-.main-content{
+.main-content {
   flex: 1;
   overflow: hidden;
 }
-.navbar{
+.navbar {
   display: flex;
   justify-content: space-between;
   text-align: center;
   padding: 10px 30px;
-  border-bottom: 1px solid  #0000001A;
+  border-bottom: 1px solid #0000001a;
 }
-.navbar >div:nth-child(1){
-  border: 2px solid #0000001A;
-  background-color: #0000001A;
+.navbar > div:nth-child(1) {
+  border: 2px solid #0000001a;
+  background-color: #0000001a;
   border-radius: 10px;
   padding: 2px 10px;
 }
-.navbar >div>input{
+.navbar > div > input {
   padding: 3px 10px;
   outline: none;
   width: 400px;
 }
-.usericon{
+.usericon {
   gap: 10px;
   height: 37px;
   width: 180px;
@@ -128,12 +123,12 @@
   align-items: center;
 }
 
-.userimg{
+.userimg {
   height: 35px;
   width: 35px;
   border-radius: 50%;
   border: none;
-  background-color: #E8521A;
+  background-color: #e8521a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,7 +138,7 @@
   cursor: pointer;
 }
 
-.userdetails{
+.userdetails {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -151,15 +146,15 @@
   cursor: pointer;
 }
 
-.userdetails h6{
+.userdetails h6 {
   font-size: 14px;
   font-weight: 600;
-   white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.userdetails p{
+.userdetails p {
   font-size: 12px;
   color: #717182;
   white-space: nowrap;
@@ -168,19 +163,20 @@
   width: 120px;
 }
 
-
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ from login */
-.login-from ,.categoryfrom{
+.login-from,
+.categoryfrom {
   position: fixed;
   inset: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-from form,.categoryfrom from{
+.login-from form,
+.categoryfrom form {
   width: 350px;
   background-color: white;
   padding: 25px;
@@ -191,53 +187,54 @@
   gap: 15px;
 }
 
-.login-from h1{
+.login-from h1 {
   text-align: center;
   font-size: 24px;
   font-weight: 600;
 }
 
-.login-from input,.categoryfrom input{
+.login-from input,
+.categoryfrom input,
+.categoryfrom select {
   padding: 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   outline: none;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.login-from input:focus,.categoryfrom input:focus{
-  border-color: #E8521A;
+.login-from input:focus,
+.categoryfrom input:focus,
+.categoryfrom select:focus {
+  border-color: #e8521a;
 }
 
-.loginbtn{
+.loginbtn {
   display: flex;
   gap: 10px;
 }
 
-.loginbtn button{
+.loginbtn button,
+.categoryfrom button {
   flex: 1;
   padding: 10px;
-  border: none;
+  border: 1px solid #e8521a;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-
-.loginbtn button[type="submit"]{
-  background-color: #E8521A;
+.loginbtn > button:hover,
+.categoryfrom button:hover {
+  background-color: #e8521a;
   color: white;
 }
 
-.loginbtn button[type="button"]:focus{
-  background-color: #e5e7eb;
-  
-}
-.logout:hover{
- 
+.logout:hover {
   cursor: pointer;
 }
-
-
 
 /* ++++++++++++++++++++++++++++++++++++++++DARK MODE ================= */
 
@@ -246,12 +243,10 @@
   color: white;
 }
 
-
 .dark .side-bar {
   background-color: #111827;
   color: white;
 }
-
 
 .dark .navbar {
   background-color: #111827;
@@ -259,80 +254,110 @@
   border-bottom: 1px solid #374151;
 }
 
-
 .dark .navbar > div:nth-child(1) {
   background-color: #1f2937;
   border: 1px solid #374151;
 }
-
 
 .dark .navbar input {
   color: white;
   background-color: transparent;
 }
 
-
 .dark .navbar input::placeholder {
   color: #9ca3af;
 }
 
-
 .dark .userdetails p {
   color: #d1d5db;
 }
-.dark .main-content1{
+.dark .main-content1 {
   background-color: #1f2937;
   color: white;
 }
 
-.dark .login-from form {
+.dark .login-from form,
+.dark .categoryfrom form {
   background-color: #1f2937;
   color: white;
 }
 
-
-.dark .login-from input {
+.dark .login-from input,
+.dark .categoryfrom input,
+.dark .categoryfrom select {
   background-color: #111827;
   color: white;
   border: 1px solid #374151;
 }
-.dark .all-cards{
+.dark .all-cards {
   background-color: #455264;
   color: white;
 }
 /* 222222222222222222222222233444444444444444444444444444444444433         main-content1 */
-.main-content1{
+.main-content1 {
   padding: 10px 30px;
   overflow-y: auto;
-
 }
-
 
 /* +++++++++++++++++++++++++++++++++++++++++++categories++++++++++++++++++++++++++++++++ */
-.categories{
+.categories {
   flex: 1;
-  height:100%;
- 
-  
+  height: 100%;
 }
-.categoy-head{
+.categoy-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.categoy-head>div:nth-child(2){
+.categoy-head > div:nth-child(2) {
   padding: 10px 20px;
   border-radius: 10px;
-  background-color: #E8521A;
+  background-color: #e8521a;
   cursor: pointer;
 }
-.all-cards{
+.all-cards {
   margin: 20px 0px;
-  margin-bottom: 60px;
+  overflow-y: scroll;
   width: 100%;
-  height: 100%;
+  height: 450px;
   border-radius: 10px;
-  border: 1px solid #0000001A;
-  background-color: #FFFFFF;
+  border: 1px solid #0000001a;
+  background-color: #ffffff;
 }
 
+.categoryfrom > form > label {
+  font-size: small;
+  font-weight: 700;
+}
+
+.all-cards-search {
+  margin: 10px 20px;
+  gap: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+}
+.all-cards-search input,
+.all-cards-search select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+.categorycard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0px 20px;
+}
+/* -------------------------------------cards***************************************************** */
+.category-cards {
+  background-color: #e8521a;
+  height: 200px;
+  width: 200px;
+}
