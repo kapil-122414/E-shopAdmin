@@ -284,7 +284,9 @@
 
 .dark .login-from input,
 .dark .categoryfrom input,
-.dark .categoryfrom select {
+.dark .categoryfrom select,
+.dark .all-cards-search select,
+.dark .all-cards-search input {
   background-color: #111827;
   color: white;
   border: 1px solid #374151;
@@ -292,6 +294,26 @@
 .dark .all-cards {
   background-color: #455264;
   color: white;
+}
+.dark .category-cards {
+  background-color: #374151;
+  color: white;
+  box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.3);
+}
+
+.dark .card-all h6 {
+  color: #d1d5db;
+}
+
+.dark .editdiv > button:nth-child(1) {
+  background-color: #4b5563;
+  color: white;
+  border: 1px solid #6b7280;
+}
+
+.dark .editdiv > button:nth-child(2) {
+  color: white;
+  border: 1px solid #ef4444;
 }
 /* 222222222222222222222222233444444444444444444444444444444444433         main-content1 */
 .main-content1 {
@@ -331,8 +353,8 @@
 }
 
 .all-cards-search {
-  margin: 10px 20px;
-  gap: 40px;
+  margin: 30px 20px;
+  gap: 50px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -352,12 +374,43 @@
 .categorycard {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 50px;
   padding: 0px 20px;
 }
 /* -------------------------------------cards***************************************************** */
 .category-cards {
-  background-color: #e8521a;
-  height: 200px;
-  width: 200px;
+  background-color: #ffffff;
+  height: 260px;
+  width: 210px;
+  box-shadow: 0px 3px 4px 2px #0000001a;
+  border-radius: 10px;
+}
+.category-cards img {
+  height: 140px;
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+}
+.card-all,
+.editdiv {
+  padding: 10px 15px 0px 10px;
+}
+.editdiv {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.editdiv > button:nth-child(1) {
+  padding: 5px 45px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 3px 2px #0000001a;
+  border: 1px solid #0000001a;
+}
+.editdiv > button:nth-child(2) {
+  padding: 5px;
+  border-radius: 8px;
+
+  border: 1px solid #ef444433;
 }

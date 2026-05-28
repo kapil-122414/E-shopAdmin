@@ -4,8 +4,16 @@ import Categoryhooks from "../Hooks/categoryhooks";
 import { categoryget } from "../service/categoryapi";
 import Categorycard from "../cards/categorycard";
 const Categories = () => {
-  const { from, setFrom, formdata, setFormdata, getdata, categoryies } =
-    Categoryhooks();
+  const {
+    from,
+    setFrom,
+    formdata,
+    setFormdata,
+    getdata,
+    categoryies,
+    postdata,
+    deletedata,
+  } = Categoryhooks();
 
   return (
     <div className="categories">
@@ -34,7 +42,7 @@ const Categories = () => {
           {categoryies.map((item) => {
             return (
               <div key={item._id}>
-                <Categorycard item={item} />
+                <Categorycard item={item} deletedata={deletedata} />
               </div>
             );
           })}
@@ -47,6 +55,9 @@ const Categories = () => {
           setFrom={setFrom}
           formdata={formdata}
           setFormdata={setFormdata}
+          postdata={postdata}
+          getdat={getdata}
+          
         />
       )}
     </div>

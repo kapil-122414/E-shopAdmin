@@ -5,4 +5,12 @@ const api = axios.create({
 });
 
 export const categoryget = () => api.get("/category");
-
+export const categorypost = (data) =>
+  api.post("/category", data, {
+    headers: {
+      "Content-Length": "multipart/form-data",
+    },
+  });
+export const categorydelete = (id) => {
+  return api.delete(`/category/${id}`);
+};

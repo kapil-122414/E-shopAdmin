@@ -1,7 +1,15 @@
-import React from "react";
-import { Form } from "react-router-dom";
+import React, { useEffect } from "react";
+
 import { useState } from "react";
-const Categoryfrom = ({ from, setFrom, formdata, setFormdata }) => {
+const Categoryfrom = ({
+  from,
+  setFrom,
+  formdata,
+  setFormdata,
+  postdata,
+  getdata,
+ 
+}) => {
   const [preview, setPreview] = useState("");
   const onhandchange = (e) => {
     const { name, value } = e.target;
@@ -31,17 +39,36 @@ const Categoryfrom = ({ from, setFrom, formdata, setFormdata }) => {
       setPreview(URL.createObjectURL(file));
     }
   };
+  useEffect(() => {
+    if (from) {
+      setFormdata({
+        cartegoryname: "",
+        slug: "",
+        status: "",
+        Img: null,
+      });
 
-  const onhandlesubmit = (e) => {
-    e.preventDefault();
-    setFormdata({
-      cartegoryname: "",
-      slug: "",
-      status: "",
-      Img: null,
-    });
-    setPreview("");
-    setFrom(false);
+      setPreview("");
+    }
+  }, [from, setFormdata]);
+
+  const onhandlesubmit = async (e) => {
+    try {
+      e.preventDefault();
+      await postdata();
+
+      setFormdata({
+        cartegoryname: "",
+        slug: "",
+        status: "",
+        Img: null,
+      });
+      setPreview("");
+      setFrom(false);
+      console.log("CATEGORY CREATED SUCCESSFULLY");
+    } catch (error) {
+      console.log("SUBMIT ERROR :", error);
+    }
   };
 
   return (
