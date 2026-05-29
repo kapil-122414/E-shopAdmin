@@ -377,6 +377,9 @@
   gap: 50px;
   padding: 0px 20px;
 }
+.categoryfrom {
+  overflow: auto;
+}
 /* -------------------------------------cards***************************************************** */
 .category-cards {
   background-color: #ffffff;

@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 
 import { useState } from "react";
+
 const Categoryfrom = ({
-  from,
   setFrom,
   formdata,
   setFormdata,
   postdata,
-  getdata,
- 
+
+  editdata,
+  seteditdata,
+  updatedata,
 }) => {
   const [preview, setPreview] = useState("");
   const onhandchange = (e) => {
@@ -40,41 +42,38 @@ const Categoryfrom = ({
     }
   };
   useEffect(() => {
-    if (from) {
-      setFormdata({
-        cartegoryname: "",
-        slug: "",
-        status: "",
-        Img: null,
-      });
-
-      setPreview("");
+    if (editdata && typeof formdata.Img === "string") {
+      setPreview(formdata.Img);
     }
-  }, [from, setFormdata]);
+  }, [editdata, formdata.Img]);
 
   const onhandlesubmit = async (e) => {
     try {
       e.preventDefault();
-      await postdata();
 
-      setFormdata({
-        cartegoryname: "",
-        slug: "",
-        status: "",
-        Img: null,
-      });
+      if (editdata) {
+        await updatedata(editdata._id);
+      } else {
+        await postdata();
+      }
+
+      // Reset sab kuch
+      setFormdata({ cartegoryname: "", slug: "", status: "", Img: null });
       setPreview("");
-      setFrom(false);
-      console.log("CATEGORY CREATED SUCCESSFULLY");
+      seteditdata(null);
+      setFrom(false); // ✅ Yeh last mein call ho raha hai — sahi hai
     } catch (error) {
       console.log("SUBMIT ERROR :", error);
+      // ⚠️ Error aane pe form band nahi hoga — intentional hai
     }
   };
 
   return (
     <div className="categoryfrom">
       <form onSubmit={onhandlesubmit}>
-        <h1 className="text-lg ">Add New Categories</h1>
+        <h1 className="text-lg ">
+          {editdata ? "Edit Category" : "Add New Categories"}
+        </h1>
         <label>Category Name</label>
         <input
           required
@@ -99,26 +98,46 @@ const Categoryfrom = ({
           <option value="Inactive">InActive</option>
         </select>
         <label>Category image</label>
-        <input
-          required
-          type="file"
-          name="Img"
-          accept="image/*"
-          placeholder="Click to upload image"
-          onChange={handleImg}
-        />
+        <label>Current Image</label>
+
         {preview && (
           <img
             src={preview}
             alt="preview"
-            className="w-full h-20 object-cover rounded"
+            className="w-full h-24 object-cover rounded"
           />
         )}
+
+        <input
+          type="file"
+          name="Img"
+          required={!editdata}
+          accept="image/*"
+          onChange={handleImg}
+        />
         <div className="flex gap-3">
-          <button type="button" onClick={() => setFrom(false)}>
+          <button
+            type="button"
+            onClick={() => {
+              setFrom(false);
+
+              seteditdata(null);
+
+              setFormdata({
+                cartegoryname: "",
+                slug: "",
+                status: "",
+                Img: null,
+              });
+
+              setPreview("");
+            }}
+          >
             Cancel
           </button>
-          <button type="submit">Create Category</button>
+          <button type="submit">
+            {editdata ? "Edit Category" : "Create Category"}
+          </button>
         </div>
       </form>
     </div>
