@@ -4,7 +4,10 @@ const api = axios.create({
   withCredentials: true,
 });
 
-export const categoryget = (page) => api.get(`/category?page=${page}&limit=4`);
+export const categoryget = (page, search = "", status) =>
+  api.get(
+    `/category?page=${page}&limit=4&search=${encodeURIComponent(search)}&status=${encodeURIComponent(status)}`,
+  );
 export const categorypost = (data) =>
   api.post("/category", data, {
     headers: {

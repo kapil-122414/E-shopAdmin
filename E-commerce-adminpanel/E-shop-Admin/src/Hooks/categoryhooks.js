@@ -11,7 +11,10 @@ const categoryhooks = () => {
   const [categoryies, setcategoryies] = useState([]);
   const [editdata, seteditdata] = useState(null);
   const [loading, setloading] = useState(false);
+  const [totalpage, settotalpage] = useState(1);
   const [page, setpage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [status, setstatus] = useState("");
   const [formdata, setFormdata] = useState({
     cartegoryname: "",
     slug: "",
@@ -22,9 +25,10 @@ const categoryhooks = () => {
   const getdata = async () => {
     try {
       setloading(true);
-      const res = await categoryget(page);
+      const res = await categoryget(page, search, status);
+      console.log(status);
       setcategoryies(res.data.data);
-
+      settotalpage(res.data.totalPages);
       console.log(res.data.data);
     } catch (error) {
       console.log();
@@ -34,7 +38,7 @@ const categoryhooks = () => {
   };
   useEffect(() => {
     getdata();
-  }, [page]);
+  }, [page, search, status]);
   const postdata = async () => {
     try {
       setloading(true);
@@ -108,6 +112,11 @@ const categoryhooks = () => {
     loading,
     page,
     setpage,
+    totalpage,
+    search,
+    setSearch,
+    status,
+    setstatus,
   };
 };
 

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Categoryfrom from "../froms/categoryfrom";
-import Filter from "../Hooks/filter";
+
 import Categoryhooks from "../Hooks/categoryhooks";
 import Pagination from "../pagination/pagination";
 import Categorycard from "../cards/categorycard";
@@ -21,11 +21,12 @@ const Categories = () => {
     loading,
     page,
     setpage,
+    totalpage,
+    search,
+    setSearch,
+    status,
+    setstatus,
   } = Categoryhooks();
-  const { search, setSearch, status, setStatus, datafilter } = Filter(
-    categoryies,
-    "Categoryname",
-  );
 
   return (
     <div className="categories">
@@ -58,11 +59,14 @@ const Categories = () => {
         <div className="all-cards-search">
           <input
             type="text"
-            placeholder="search categorys ..."
+            placeholder="Search categories..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setpage(1);
+              setSearch(e.target.value);
+            }}
           />
-          <select value={status} onChange={(e) => setStatus(e.target.value)}>
+          <select value={status} onChange={(e) => setstatus(e.target.value)}>
             <option value="">status</option>
             <option value="active">active</option>
             <option value="inactive">Inactive</option>
@@ -73,8 +77,8 @@ const Categories = () => {
             <div className="flex justify-center items-center py-10">
               <FaSpinner className="animate-spin text-3xl" />
             </div>
-          ) : datafilter.length > 0 ? (
-            datafilter.map((item) => {
+          ) : categoryies.length > 0 ? (
+            categoryies.map((item) => {
               return (
                 <div key={item._id}>
                   <Categorycard
@@ -98,7 +102,7 @@ const Categories = () => {
           )}
         </div>
         <div>
-          <Pagination page={page} setpage={setpage} />
+          <Pagination page={page} setpage={setpage} totalpage={totalpage} />
         </div>
       </div>
 
