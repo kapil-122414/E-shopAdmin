@@ -69,7 +69,7 @@ const Categories = () => {
           <select value={status} onChange={(e) => setstatus(e.target.value)}>
             <option value="">status</option>
             <option value="active">active</option>
-            <option value="inactive">Inactive</option>
+            <option value="Inactive">Inactive</option>
           </select>
         </div>
         <div className="categorycard">
