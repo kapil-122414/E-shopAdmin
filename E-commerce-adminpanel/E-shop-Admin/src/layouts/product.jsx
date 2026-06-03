@@ -16,6 +16,9 @@ const Product = ({ search }) => {
     setImage,
     fromdata,
     setfromdata,
+    resetForm,
+    category,
+    brands,
   } = Producthooks();
 
   return (
@@ -48,6 +51,9 @@ const Product = ({ search }) => {
           setImage={setImage}
           fromdata={fromdata}
           setfromdata={setfromdata}
+          resetForm={resetForm}
+          category={category}
+          brands={brands}
         />
       )}
     </div>

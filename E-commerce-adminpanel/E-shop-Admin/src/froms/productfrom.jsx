@@ -13,10 +13,24 @@ const productfrom = ({
   setImage,
   fromdata,
   setfromdata,
+  resetForm,
+  category,
+  brands,
 }) => {
+  console.log(category);
   const onhandlesubmit = (e) => {
     e.preventDefault();
+    resetForm();
+    setfrom(false);
   };
+  const slug = (text = "") => {
+    return text
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]+/g, "");
+  };
+
   const handleImg = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -25,12 +39,31 @@ const productfrom = ({
   };
   const onhandchange = (e) => {
     const { name, value } = e.target;
-    setfromdata((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    setfromdata((prev) => {
+      if (name === "discount" && Number(value) > 100) {
+        return prev;
+      }
+      const updatedData = {
+        ...prev,
+        [name]: value,
+      };
+
+      if (name === "productname") {
+        updatedData.slug = slug(value);
+      }
+
+      const mrp = name === "mrp" ? Number(value) : Number(prev.mrp || 0);
+
+      const discount =
+        name === "discount" ? Number(value) : Number(prev.discount || 0);
+
+      updatedData.price = mrp - (mrp * discount) / 100;
+
+      return updatedData;
+    });
   };
-  console.log(fromdata);
+
   return (
     <div className="product-from">
       <form className="product-fromdata" onSubmit={onhandlesubmit}>
@@ -50,13 +83,19 @@ const productfrom = ({
               <label>Product Name</label>
               <input
                 type="text"
-                name="productName"
-                onchange={onhandchange}
+                name="productname"
+                onChange={onhandchange}
                 value={fromdata.productname}
                 placeholder="Enter product Name"
               />
               <label>Slug</label>
-              <input type="text" placeholder="Enter product Name" />
+              <input
+                type="text"
+                placeholder="Enter product Name"
+                name="slug"
+                value={fromdata.slug}
+                readOnly
+              />
               <label>Description</label>
               <textarea
                 name="description"
@@ -65,27 +104,60 @@ const productfrom = ({
                 rows="4"
               />
               <label>Short Description</label>
-              <input type="text" placeholder="Enter product Name" />
+              <input
+                type="text"
+                placeholder="Short Description"
+                name="shortDescription"
+                value={fromdata.shortDescription}
+                onChange={onhandchange}
+              />
             </div>
             <div>
               <h5>Pricing & Inventory</h5>
               <div className="flex justify-between gap-7">
                 <div>
                   <label>Price</label>
-                  <input type="number" min="0" placeholder="0.00" />
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="0.00"
+                    name="price"
+                    value={fromdata.price}
+                    readOnly
+                  />
                   <label>Discount (%)</label>
-                  <input type="number" min="0" placeholder="0" />
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    placeholder="0"
+                    name="discount"
+                    value={fromdata.discount}
+                    onChange={onhandchange}
+                  />
                 </div>
                 <div>
                   <label>MRP</label>
-                  <input type="number" min="0" placeholder="0.00" />
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="0.00"
+                    name="mrp"
+                    value={fromdata.mrp}
+                    onChange={onhandchange}
+                  />
 
                   <label>Stock Quantity</label>
-                  <input type="number" min="0" placeholder="0.00" />
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="0.00"
+                    name="stock"
+                    value={fromdata.stock}
+                    onChange={onhandchange}
+                  />
                 </div>
               </div>
-              <label>SKU</label>
-              <input type="text" placeholder="PROD-001" />
             </div>
             <div>
               <div className="flex justify-between items-center">
@@ -111,12 +183,32 @@ const productfrom = ({
             <div>
               <h1> Organization</h1>
               <label>Category</label>
-              <select>
-                <option> select Category</option>
+              <select
+                name="category"
+                value={fromdata.category}
+                onChange={onhandchange}
+              >
+                <option value="">Select Category</option>
+
+                {category.map((item) => (
+                  <option key={item._id} value={item._id}>
+                    {item.Categoryname}
+                  </option>
+                ))}
               </select>
               <label>Brand</label>
-              <select>
-                <option> Select Brand</option>
+              <select
+                name="brand"
+                value={fromdata.brand}
+                onChange={onhandchange}
+              >
+                <option value="">Select Brand</option>
+
+                {brands.map((item) => (
+                  <option key={item._id} value={item._id}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
               <label>Status</label>
               <select>
@@ -176,6 +268,7 @@ const productfrom = ({
               <button
                 type="button"
                 onClick={() => {
+                  resetForm();
                   setfrom(false);
                 }}
               >

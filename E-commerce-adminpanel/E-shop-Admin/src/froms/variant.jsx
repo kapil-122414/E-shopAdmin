@@ -2,6 +2,7 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 
 const Variant = ({ variant, index, removeVariant, handleVariantChange }) => {
+  
   return (
     <div className="variant-box">
       <div className="flex justify-between items-center">
@@ -42,6 +43,7 @@ const Variant = ({ variant, index, removeVariant, handleVariantChange }) => {
         value={variant.stock}
         onChange={(e) => handleVariantChange(index, "stock", e.target.value)}
       />
+      <input type="text" placeholder="SKU" value={variant.sku || ""} readOnly />
     </div>
   );
 };
