@@ -48,7 +48,6 @@ const categoryhooks = () => {
       data.append("Status", formdata.status);
       data.append("Img", formdata.Img);
 
-      console.log("FORM DATA :", formdata);
       const res = await categorypost(data);
       console.log("POST RESPONSE :", res.data);
 
@@ -117,6 +116,7 @@ const categoryhooks = () => {
     setSearch,
     status,
     setstatus,
+  
   };
 };
 

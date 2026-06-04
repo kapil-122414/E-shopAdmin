@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { categorys, brand } from "../service/productapi";
+import {
+  categorys,
+  brand,
+  createDescription,
+  postproduct,
+} from "../service/productapi";
 const producthooks = () => {
-  const [from, setfrom] = useState(false);
   const [image, setImage] = useState(null);
+  const [from, setfrom] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
   const [variants, setVariants] = useState([
     {
       size: "",
@@ -11,6 +17,7 @@ const producthooks = () => {
       stock: "",
     },
   ]);
+  const [loading, setloading] = useState(false);
   const [category, setCategory] = useState([]);
   const [brands, setBrand] = useState([]);
   const [fromdata, setfromdata] = useState({
@@ -94,18 +101,71 @@ const producthooks = () => {
   const categoryies = async () => {
     try {
       const res = await categorys();
-      console.log("hyy");
-      console.log("API Response:", res.data);
-
-      setCategories(res.data.data);
+      setCategory(res.data.data);
     } catch (error) {
       console.log(error);
     }
   };
 
   const branddata = async () => {
-    const res = await brand();
-    setBrand(res.data.data);
+    try {
+      const res = await brand();
+      setBrand(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const setDescription = async () => {
+    if (!fromdata.productname || !fromdata.category || !fromdata.brand) {
+      alert("Product Name, Category aur Brand fill karo");
+      return;
+    }
+    try {
+      setloading(true);
+      const data = {
+        Productname: fromdata.productname,
+        color: variants[0]?.color,
+        brand: fromdata.brand,
+        price: fromdata.price,
+        category: fromdata.category,
+      };
+
+      const res = await createDescription(data);
+      setfromdata((prev) => ({
+        ...prev,
+        description: res.data.description,
+      }));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setloading(false);
+    }
+  };
+
+  const createproduct = async () => {
+    try {
+      console.log("hello");
+      const data = new FormData();
+      data.append("productname", fromdata.productname);
+      data.append("slug", fromdata.slug);
+      data.append("description", fromdata.description);
+      data.append("shortDescription", fromdata.shortDescription);
+      data.append("price", fromdata.price);
+      data.append("mrp", fromdata.mrp);
+      data.append("discount", fromdata.discount);
+      data.append("stock", fromdata.stock);
+      data.append("status", fromdata.status);
+      data.append("image", imageFile);
+      data.append("category", fromdata.category);
+      data.append("brand", fromdata.brand);
+      data.append("variants", JSON.stringify(variants));
+
+      const res = await postproduct(data);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     categoryies();
@@ -126,6 +186,11 @@ const producthooks = () => {
     resetForm,
     category,
     brands,
+    setDescription,
+    loading,
+    createproduct,
+    imageFile,
+    setImageFile,
   };
 };
 

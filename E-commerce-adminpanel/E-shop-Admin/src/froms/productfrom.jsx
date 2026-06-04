@@ -1,5 +1,6 @@
 import React from "react";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaMagic } from "react-icons/fa";
+
 import Variant from "./variant";
 const productfrom = ({
   from,
@@ -16,12 +17,19 @@ const productfrom = ({
   resetForm,
   category,
   brands,
+  setDescription,
+  loading,
+  createproduct,
+  setImageFile,
+  imageFile,
 }) => {
-  console.log(category);
-  const onhandlesubmit = (e) => {
+  const onhandlesubmit = async (e) => {
     e.preventDefault();
-    resetForm();
-    setfrom(false);
+    const success = await createproduct();
+    if (success) {
+      resetForm();
+      setfrom(false);
+    }
   };
   const slug = (text = "") => {
     return text
@@ -33,8 +41,10 @@ const productfrom = ({
 
   const handleImg = (e) => {
     const file = e.target.files[0];
+
     if (file) {
       setImage(URL.createObjectURL(file));
+      setImageFile(file);
     }
   };
   const onhandchange = (e) => {
@@ -96,9 +106,21 @@ const productfrom = ({
                 value={fromdata.slug}
                 readOnly
               />
-              <label>Description</label>
+              <div className="flex justify-between ai">
+                <label>Description</label>
+                <button
+                  type="button"
+                  onClick={setDescription}
+                  className="flex items-center gap-2 px-4 py-2 bg-[#e8521a] text-white rounded-lg"
+                >
+                  <FaMagic size={18} />
+                  {loading ? "Generating..." : "AI Generate"}
+                </button>
+              </div>
               <textarea
                 name="description"
+                value={fromdata.description}
+                onChange={onhandchange}
                 placeholder="Enter product description"
                 className="border border-gray-300 rounded-lg p-10 outline-none resize-none"
                 rows="4"
@@ -211,8 +233,12 @@ const productfrom = ({
                 ))}
               </select>
               <label>Status</label>
-              <select>
-                <option>status</option>
+              <select
+                name="status"
+                value={fromdata.status}
+                onChange={onhandchange}
+              >
+                <option value="">status</option>
                 <option value="active">Active</option>
                 <option value="inactive">InActive</option>
               </select>

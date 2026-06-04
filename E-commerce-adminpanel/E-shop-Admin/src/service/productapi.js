@@ -5,4 +5,8 @@ const api = axios.create({
 });
 export const categorys = () => api.get("/category");
 export const brand = () => api.get("/brand");
-export const createDescription = () => api.post("/generate-description");
+export const createDescription = (data) =>
+  api.post("/generate-description", data);
+export const postproduct = (data) => {
+  api.post("/product",data);
+};

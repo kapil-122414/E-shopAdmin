@@ -531,3 +531,10 @@
 .from-right button {
   padding: 4px;
 }
+.ai {
+  margin: 3px;
+}
+
+.ai button {
+  padding: 1px 5px;
+}

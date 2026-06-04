@@ -19,6 +19,11 @@ const Product = ({ search }) => {
     resetForm,
     category,
     brands,
+    setDescription,
+    loading,
+    createproduct,
+    setImageFile,
+    imageFile,
   } = Producthooks();
 
   return (
@@ -54,6 +59,11 @@ const Product = ({ search }) => {
           resetForm={resetForm}
           category={category}
           brands={brands}
+          setDescription={setDescription}
+          loading={loading}
+          createproduct={createproduct}
+          setImageFile={setImageFile}
+          imageFile={imageFile}
         />
       )}
     </div>
