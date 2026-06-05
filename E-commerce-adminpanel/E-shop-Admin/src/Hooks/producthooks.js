@@ -4,6 +4,7 @@ import {
   brand,
   createDescription,
   postproduct,
+  productget,
 } from "../service/productapi";
 const producthooks = () => {
   const [image, setImage] = useState(null);
@@ -15,11 +16,13 @@ const producthooks = () => {
       color: "",
       price: "",
       stock: "",
+      sku: "",
     },
   ]);
   const [loading, setloading] = useState(false);
   const [category, setCategory] = useState([]);
   const [brands, setBrand] = useState([]);
+  const [productdata, setProductdata] = useState([]);
   const [fromdata, setfromdata] = useState({
     productname: "",
     slug: "",
@@ -147,22 +150,36 @@ const producthooks = () => {
     try {
       console.log("hello");
       const data = new FormData();
-      data.append("productname", fromdata.productname);
+      data.append("Productname", fromdata.productname);
       data.append("slug", fromdata.slug);
-      data.append("description", fromdata.description);
-      data.append("shortDescription", fromdata.shortDescription);
+      data.append("Description", fromdata.description);
+      data.append("shortdiscription", fromdata.shortDescription);
       data.append("price", fromdata.price);
       data.append("mrp", fromdata.mrp);
       data.append("discount", fromdata.discount);
       data.append("stock", fromdata.stock);
       data.append("status", fromdata.status);
-      data.append("image", imageFile);
-      data.append("category", fromdata.category);
+      data.append("Img", imageFile);
+      data.append("categoryId", fromdata.category);
       data.append("brand", fromdata.brand);
-      data.append("variants", JSON.stringify(variants));
+      data.append("variant", JSON.stringify(variants));
 
       const res = await postproduct(data);
-      console.log(res.data);
+      if (res.status === 201 || res.status === 200) {
+        return true;
+      }
+      return false;
+      consoe.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getproduct = async () => {
+    console.log("hyy");
+    try {
+      const res = await productget();
+      setProductdata(res.data.data);
+      console.log("getdata", res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -170,6 +187,7 @@ const producthooks = () => {
   useEffect(() => {
     categoryies();
     branddata();
+    getproduct();
   }, []);
   return {
     from,
@@ -191,6 +209,8 @@ const producthooks = () => {
     createproduct,
     imageFile,
     setImageFile,
+    productdata,
+    setProductdata,
   };
 };
 

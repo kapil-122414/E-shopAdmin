@@ -26,6 +26,7 @@ const productfrom = ({
   const onhandlesubmit = async (e) => {
     e.preventDefault();
     const success = await createproduct();
+    console.log("success", success);
     if (success) {
       resetForm();
       setfrom(false);

@@ -392,6 +392,8 @@
 .all-cards-search input,
 .from-left > div:nth-child(1) > input,
 .from-left div:nth-child(2) input,
+.product-table > div:nth-child(1),
+.product-table input,
 .all-cards-search select {
   padding: 12px;
   border: 1px solid #d1d5db;
@@ -469,6 +471,7 @@
   width: auto;
   background-color: #ffffff;
   margin: 20px 0px;
+  padding: 20px;
   border-radius: 20px;
 }
 .product-from {
@@ -537,4 +540,47 @@
 
 .ai button {
   padding: 1px 5px;
+}
+
+.product-table input {
+  padding: 2px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  width: 80%;
+}
+.product-table > div:nth-child(1) {
+  width: 50%;
+}
+
+.product-table table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table thead {
+  background: #f9fafb;
+}
+
+.product-table th {
+  text-align: left;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #717182;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.product-table td {
+  padding: 14px;
+  font-size: 14px;
+  color: #4b5563;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.product-table tbody tr:hover {
+  background: #f9fafb;
+  transition: 0.2s;
 }

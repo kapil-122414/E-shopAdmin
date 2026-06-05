@@ -24,6 +24,8 @@ const Product = ({ search }) => {
     createproduct,
     setImageFile,
     imageFile,
+    productdata,
+    setProductdata,
   } = Producthooks();
 
   return (
@@ -40,7 +42,10 @@ const Product = ({ search }) => {
         </div>
       </div>
       <div>
-        <Producttable />
+        <Producttable
+          productdata={productdata}
+          setProductdata={setProductdata}
+        />
       </div>
 
       {from && (
