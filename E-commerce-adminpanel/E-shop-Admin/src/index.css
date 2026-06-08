@@ -541,7 +541,9 @@
 .ai button {
   padding: 1px 5px;
 }
-
+.product-table {
+  height: 100%;
+}
 .product-table input {
   padding: 2px;
   border: none;
@@ -558,6 +560,7 @@
   margin-top: 20px;
   width: 100%;
   border-collapse: collapse;
+  overflow: auto;
 }
 
 .product-table thead {
@@ -572,15 +575,27 @@
   color: #717182;
   border-bottom: 1px solid #e5e7eb;
 }
+.dark span,
+.dark .darks {
+  color: #e5e7eb;
+}
 
 .product-table td {
-  padding: 14px;
+  padding: 10px;
   font-size: 14px;
-  color: #4b5563;
+
   border-bottom: 1px solid #e5e7eb;
 }
 
 .product-table tbody tr:hover {
   background: #f9fafb;
   transition: 0.2s;
+}
+.dark .product-table tbody tr:hover {
+  background: #717182;
+  transition: 0.2s;
+}
+.product-table select {
+  padding: 5px;
+  outline: none;
 }

@@ -3,7 +3,7 @@ import Producttable from "../cards/producttable";
 import Producthooks from "../Hooks/producthooks";
 import Productfrom from "../froms/productfrom";
 
-const Product = ({ search }) => {
+const Product = () => {
   const {
     from,
     setfrom,
@@ -26,6 +26,15 @@ const Product = ({ search }) => {
     imageFile,
     productdata,
     setProductdata,
+    getproduct,
+    search,
+    setSearch,
+    status,
+    setstatus,
+    totalpage,
+    settotalpage,
+    page,
+    setpage,
   } = Producthooks();
 
   return (
@@ -42,9 +51,19 @@ const Product = ({ search }) => {
         </div>
       </div>
       <div>
+
         <Producttable
           productdata={productdata}
           setProductdata={setProductdata}
+          search={search}
+          setSearch={setSearch}
+          status={status}
+          setstatus={setstatus}
+          totalpage={totalpage}
+          settotalpage={settotalpage}
+          page={page}
+          setpage={setpage}
+          loading={loading}
         />
       </div>
 
@@ -69,6 +88,7 @@ const Product = ({ search }) => {
           createproduct={createproduct}
           setImageFile={setImageFile}
           imageFile={imageFile}
+          getproduct={getproduct}
         />
       )}
     </div>

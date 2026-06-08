@@ -22,6 +22,7 @@ const productfrom = ({
   createproduct,
   setImageFile,
   imageFile,
+  getproduct,
 }) => {
   const onhandlesubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +31,7 @@ const productfrom = ({
     if (success) {
       resetForm();
       setfrom(false);
+      getproduct();
     }
   };
   const slug = (text = "") => {
@@ -242,6 +244,8 @@ const productfrom = ({
                 <option value="">status</option>
                 <option value="active">Active</option>
                 <option value="inactive">InActive</option>
+                <option value="Low Stock">Low Stock</option>
+                <option value="Out of stock">Out of Stock</option>
               </select>
             </div>
 

@@ -11,4 +11,13 @@ export const createDescription = (data) =>
 export const postproduct = (data) => {
   return api.post("/product", data);
 };
-export const productget = () => api.get("/product");
+export const productget = (page, search, status) => {
+  return api.get(
+    `/product?page=${page}&limit=4&search=${search}&status=${status}`,
+    {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    },
+  );
+};

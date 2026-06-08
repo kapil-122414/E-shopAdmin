@@ -37,6 +37,10 @@ const producthooks = () => {
     brand: "",
     status: "",
   });
+  const [totalpage, settotalpage] = useState(1);
+  const [page, setpage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [status, setstatus] = useState("");
   const addVariant = () => {
     setVariants((prev) => [
       ...prev,
@@ -148,7 +152,7 @@ const producthooks = () => {
 
   const createproduct = async () => {
     try {
-      console.log("hello");
+      setloading(true);
       const data = new FormData();
       data.append("Productname", fromdata.productname);
       data.append("slug", fromdata.slug);
@@ -172,23 +176,29 @@ const producthooks = () => {
       consoe.log(res);
     } catch (error) {
       console.log(error);
+    } finally {
+      setloading(false);
     }
   };
   const getproduct = async () => {
     console.log("hyy");
     try {
-      const res = await productget();
+      setloading(true);
+      const res = await productget(page, search, status);
       setProductdata(res.data.data);
-      console.log("getdata", res.data.data);
+
+      settotalpage(res.data.totalPages);
     } catch (error) {
-      console.log(error);
+      console.log("error", error.response?.data);
+    } finally {
+      setloading(false);
     }
   };
   useEffect(() => {
     categoryies();
     branddata();
     getproduct();
-  }, []);
+  }, [page, search, status]);
   return {
     from,
     setfrom,
@@ -211,6 +221,15 @@ const producthooks = () => {
     setImageFile,
     productdata,
     setProductdata,
+    getproduct,
+    search,
+    setSearch,
+    status,
+    setstatus,
+    totalpage,
+    settotalpage,
+    page,
+    setpage,
   };
 };
 
