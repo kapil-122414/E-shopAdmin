@@ -21,3 +21,12 @@ export const productget = (page, search, status) => {
     },
   );
 };
+export const productdelete = (id) => {
+  return api.delete(`/product/${id}`);
+};
+export const productedit = (id, data) => {
+  return api.patch(`/product/${id}`, data);
+};
+export const getbyid = (id) => {
+  return api.get(`/product/${id}`);
+};

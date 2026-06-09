@@ -15,6 +15,8 @@ const producttable = ({
   loading,
   page,
   setpage,
+  prodelete,
+  proedit,
 }) => {
   return (
     <div className="product-table">
@@ -63,7 +65,7 @@ const producttable = ({
                         <img
                           src={item.Img?.url}
                           alt=" not show"
-                          className="h-10 w-10 rounded-m object-center  object-cover "
+                          className="h-10 w-10 rounded-lg object-center  object-cover "
                         />
                         <span className="font-medium text-[#1A1A2E]">
                           {item.Productname}
@@ -82,8 +84,16 @@ const producttable = ({
                     <td>
                       <div className="flex gap-2.5">
                         <FaEye />
-                        <FaEdit />
-                        <FaTrash className="text-[#EF4444]" />
+                        <FaEdit
+                          onClick={() => {
+                            proedit(item._id);
+                            setfrom(true);
+                          }}
+                        />
+                        <FaTrash
+                          onClick={() => prodelete(item._id)}
+                          className="text-[#EF4444]"
+                        />
                       </div>
                     </td>
                   </tr>

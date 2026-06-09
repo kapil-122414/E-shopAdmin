@@ -23,13 +23,24 @@ const productfrom = ({
   setImageFile,
   imageFile,
   getproduct,
+  setEditId,
+  editId,
+  updateproduct,
 }) => {
   const onhandlesubmit = async (e) => {
     e.preventDefault();
-    const success = await createproduct();
-    console.log("success", success);
+
+    let success;
+
+    if (editId) {
+      success = await updateproduct(editId);
+    } else {
+      success = await createproduct();
+    }
+
     if (success) {
       resetForm();
+      setEditId(null);
       setfrom(false);
       getproduct();
     }
@@ -306,7 +317,7 @@ const productfrom = ({
                 Cancel
               </button>
               <button className="bg-[#E8521A] text-[#ffffff]" type="submit">
-                Create product
+                {editId ? " Create product" : "edit product"}
               </button>
             </div>
           </div>

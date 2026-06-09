@@ -5,6 +5,9 @@ import {
   createDescription,
   postproduct,
   productget,
+  productdelete,
+  productedit,
+  getbyid,
 } from "../service/productapi";
 const producthooks = () => {
   const [image, setImage] = useState(null);
@@ -41,6 +44,7 @@ const producthooks = () => {
   const [page, setpage] = useState(1);
   const [search, setSearch] = useState("");
   const [status, setstatus] = useState("");
+  const [editId, setEditId] = useState(null);
   const addVariant = () => {
     setVariants((prev) => [
       ...prev,
@@ -181,7 +185,6 @@ const producthooks = () => {
     }
   };
   const getproduct = async () => {
-    console.log("hyy");
     try {
       setloading(true);
       const res = await productget(page, search, status);
@@ -194,6 +197,78 @@ const producthooks = () => {
       setloading(false);
     }
   };
+
+  const prodelete = async (id) => {
+    try {
+      setloading(true);
+      const req = await productdelete(id);
+      if (req.status === 200) {
+        getproduct();
+      }
+    } catch (error) {
+      console.log("error", error.response?.status);
+      console.log("not delete category", error);
+    } finally {
+      setloading(false);
+    }
+  };
+  const proedit = async (id) => {
+    try {
+      const res = await getbyid(id);
+      setEditId(id);
+      const product = res.data.data;
+      setfromdata({
+        productname: product.Productname,
+        slug: product.slug,
+        description: product.Description,
+        shortDescription: product.shortdiscription,
+        price: product.price,
+        mrp: product.mrp,
+        discount: product.discount,
+        stock: product.stock,
+        category: product.categoryId._id,
+        brand: product.brand._id,
+        status: product.status,
+      });
+      setVariants(product.variant);
+
+      setImage(product.Img.url);
+
+      setfrom(true);
+    } catch (error) {
+      console.log("error", error.response?.status);
+    }
+  };
+  const updateproduct = async (id) => {
+    try {
+      const data = new FromData();
+      data.append("Productname", fromdata.productname);
+      data.append("slug", fromdata.slug);
+      data.append("Description", fromdata.description);
+      data.append("shortdiscription", fromdata.shortDescription);
+      data.append("price", fromdata.price);
+      data.append("mrp", fromdata.mrp);
+      data.append("discount", fromdata.discount);
+      data.append("stock", fromdata.stock);
+      data.append("status", fromdata.status);
+      data.append("Img", imageFile);
+      data.append("categoryId", fromdata.category);
+      data.append("brand", fromdata.brand);
+      data.append("variant", JSON.stringify(variants));
+      if (imageFile) {
+        data.append("Img", imageFile);
+      }
+
+      await productedit(id, data);
+      getproduct();
+      setfrom(false);
+      setEditId(null);
+      resetForm();
+    } catch (error) {
+      console.log("error", error.response?.data);
+    }
+  };
+
   useEffect(() => {
     categoryies();
     branddata();
@@ -230,6 +305,11 @@ const producthooks = () => {
     settotalpage,
     page,
     setpage,
+    prodelete,
+    proedit,
+    editId,
+    setEditId,
+    updateproduct,
   };
 };
 

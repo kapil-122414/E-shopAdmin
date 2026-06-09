@@ -35,6 +35,11 @@ const Product = () => {
     settotalpage,
     page,
     setpage,
+    prodelete,
+    proedit,
+    editId,
+    setEditId,
+    updateproduct,
   } = Producthooks();
 
   return (
@@ -51,7 +56,6 @@ const Product = () => {
         </div>
       </div>
       <div>
-
         <Producttable
           productdata={productdata}
           setProductdata={setProductdata}
@@ -64,6 +68,9 @@ const Product = () => {
           page={page}
           setpage={setpage}
           loading={loading}
+          prodelete={prodelete}
+          proedit={proedit}
+          setfrom={setfrom}
         />
       </div>
 
@@ -89,6 +96,9 @@ const Product = () => {
           setImageFile={setImageFile}
           imageFile={imageFile}
           getproduct={getproduct}
+          editId={editId}
+          setEditId={setEditId}
+          updateproduct={updateproduct}
         />
       )}
     </div>
