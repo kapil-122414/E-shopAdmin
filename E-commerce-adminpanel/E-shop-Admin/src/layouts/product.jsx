@@ -40,6 +40,10 @@ const Product = () => {
     editId,
     setEditId,
     updateproduct,
+    view,
+    setview,
+    productview,
+    viewdata,
   } = Producthooks();
 
   return (
@@ -71,6 +75,10 @@ const Product = () => {
           prodelete={prodelete}
           proedit={proedit}
           setfrom={setfrom}
+          view={view}
+          setview={setview}
+          productview={productview}
+          viewdata={viewdata}
         />
       </div>
 

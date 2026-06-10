@@ -26,6 +26,7 @@ const producthooks = () => {
   const [category, setCategory] = useState([]);
   const [brands, setBrand] = useState([]);
   const [productdata, setProductdata] = useState([]);
+  const [viewdata, setviewdata] = useState([]);
   const [fromdata, setfromdata] = useState({
     productname: "",
     slug: "",
@@ -40,6 +41,7 @@ const producthooks = () => {
     brand: "",
     status: "",
   });
+  const [view, setview] = useState(false);
   const [totalpage, settotalpage] = useState(1);
   const [page, setpage] = useState(1);
   const [search, setSearch] = useState("");
@@ -171,6 +173,7 @@ const producthooks = () => {
       data.append("categoryId", fromdata.category);
       data.append("brand", fromdata.brand);
       data.append("variant", JSON.stringify(variants));
+      console.log("brand value", fromdata.brand);
 
       const res = await postproduct(data);
       if (res.status === 201 || res.status === 200) {
@@ -179,7 +182,7 @@ const producthooks = () => {
       return false;
       consoe.log(res);
     } catch (error) {
-      console.log(error);
+      console.log("error", error.response?.data);
     } finally {
       setloading(false);
     }
@@ -241,7 +244,7 @@ const producthooks = () => {
   };
   const updateproduct = async (id) => {
     try {
-      const data = new FromData();
+      const data = new FormData();
       data.append("Productname", fromdata.productname);
       data.append("slug", fromdata.slug);
       data.append("Description", fromdata.description);
@@ -251,7 +254,7 @@ const producthooks = () => {
       data.append("discount", fromdata.discount);
       data.append("stock", fromdata.stock);
       data.append("status", fromdata.status);
-      data.append("Img", imageFile);
+
       data.append("categoryId", fromdata.category);
       data.append("brand", fromdata.brand);
       data.append("variant", JSON.stringify(variants));
@@ -259,11 +262,22 @@ const producthooks = () => {
         data.append("Img", imageFile);
       }
 
-      await productedit(id, data);
-      getproduct();
-      setfrom(false);
-      setEditId(null);
-      resetForm();
+      const res = await productedit(id, data);
+      if (res.status === 200) {
+        getproduct();
+        setfrom(false);
+        setEditId(null);
+        resetForm();
+      }
+    } catch (error) {
+      console.log("error", error.response?.data);
+    }
+  };
+  const productview = async (id) => {
+    try {
+      const res = await getbyid(id);
+      console.log("view the data", res.data.data);
+      setviewdata(res.data.data);
     } catch (error) {
       console.log("error", error.response?.data);
     }
@@ -310,6 +324,10 @@ const producthooks = () => {
     editId,
     setEditId,
     updateproduct,
+    view,
+    setview,
+    productview,
+    viewdata,
   };
 };
 

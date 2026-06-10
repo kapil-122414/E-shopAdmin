@@ -1,6 +1,7 @@
 import React from "react";
 import { FaSearch, FaEye, FaEdit, FaTrash, FaSpinner } from "react-icons/fa";
 import Pagination from "../pagination/pagination";
+import Viewproduct from "./viewproduct";
 const producttable = ({
   from,
   setfrom,
@@ -17,6 +18,10 @@ const producttable = ({
   setpage,
   prodelete,
   proedit,
+  view,
+  setview,
+  productview,
+  viewdata,
 }) => {
   return (
     <div className="product-table">
@@ -83,8 +88,15 @@ const producttable = ({
                     <td>{item.status}</td>
                     <td>
                       <div className="flex gap-2.5">
-                        <FaEye />
+                        <FaEye
+                          className="cursor-pointer"
+                          onClick={() => {
+                            setview(true);
+                            productview(item._id);
+                          }}
+                        />
                         <FaEdit
+                          className="cursor-pointer"
                           onClick={() => {
                             proedit(item._id);
                             setfrom(true);
@@ -92,7 +104,7 @@ const producttable = ({
                         />
                         <FaTrash
                           onClick={() => prodelete(item._id)}
-                          className="text-[#EF4444]"
+                          className="text-[#EF4444] cursor-pointer"
                         />
                       </div>
                     </td>
@@ -105,6 +117,7 @@ const producttable = ({
           <div>
             <Pagination totalpage={totalpage} page={page} setpage={setpage} />
           </div>
+          {view && <Viewproduct viewdata={viewdata} setview={setview} />}
         </>
       )}
     </div>

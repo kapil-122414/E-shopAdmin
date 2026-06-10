@@ -94,9 +94,19 @@ const productfrom = ({
         <FaArrowLeft
           onClick={() => {
             setfrom(false);
+            setEditId(null);
+            resetForm();
           }}
         />
-        <h2>Add New Product</h2>
+        <h2
+          onClick={() => {
+            resetForm();
+            setEditId(null);
+            setfrom(true);
+          }}
+        >
+          Add New Product
+        </h2>
         <p className="text-[#717182] text-sm">
           Fill in the details to create a new product
         </p>
@@ -317,7 +327,7 @@ const productfrom = ({
                 Cancel
               </button>
               <button className="bg-[#E8521A] text-[#ffffff]" type="submit">
-                {editId ? " Create product" : "edit product"}
+                {editId ? " edit product" : "save product"}
               </button>
             </div>
           </div>

@@ -587,7 +587,7 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.product-table tbody tr:hover {
+.product-table > tbody > tr:hover {
   background: #f9fafb;
   transition: 0.2s;
 }
@@ -598,4 +598,74 @@
 .product-table select {
   padding: 5px;
   outline: none;
+}
+
+/* dfdsssssssssssssssssssssssssssssssfdsssssssssssssssssssssssssssssssss view ----------------------------- */
+.view {
+  padding: 20px;
+  width: 600px;
+}
+.viewproduct {
+  position: fixed;
+  inset: 0;
+  justify-content: center;
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  padding: 20px;
+  overflow-y: auto;
+}
+.viewdiv {
+  margin-top: 20px;
+}
+.view {
+  height: fit-content;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin: auto;
+}
+.viewdiv div {
+  padding: 10px 20px;
+}
+
+.viewdata div {
+  margin-top: 20px;
+  width: 50%;
+  height: 300px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.viewdata div img {
+  height: 240px;
+  border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
+}
+.viewdata div:nth-child(2) p {
+  border-bottom: 1px solid rgb(65, 62, 62);
+  font-size: smaller;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dark .viewdata p,
+.viewdata span {
+  color: #374151;
+}
+.viewdata div:nth-child(2) p span {
+  font-weight: bolder;
+}
+.viewdata div:nth-child(2) {
+  padding: 10px;
+}
+.varintview tbody tr td {
+  color: #e5e7eb;
+}
+.varintview > tbody > tr:hover {
+  background-color: none;
 }
