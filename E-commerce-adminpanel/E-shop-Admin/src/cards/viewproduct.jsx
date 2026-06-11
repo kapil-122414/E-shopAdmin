@@ -1,13 +1,7 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 const viewproduct = ({ viewdata, setview }) => {
-  // const totalStock =
-  //   (viewdata?.stock || 0) +
-  //   (viewdata?.variant?.reduce(
-  //     (sum, item) => sum + (Number(item.stock) || 0),
-  //     0,
-  //   ) || 0);
-  // console.log(tottalStock);
+  
   return (
     <>
       <div className="viewproduct ">

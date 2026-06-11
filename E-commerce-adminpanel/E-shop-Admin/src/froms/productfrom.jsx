@@ -88,6 +88,10 @@ const productfrom = ({
     });
   };
 
+  const totalStock = variants.reduce((sum, item) => {
+    return sum + Number(item.stock || 0);
+  }, 0);
+
   return (
     <div className="product-from">
       <form className="product-fromdata" onSubmit={onhandlesubmit}>
@@ -199,8 +203,8 @@ const productfrom = ({
                     min="0"
                     placeholder="0.00"
                     name="stock"
-                    value={fromdata.stock}
-                    onChange={onhandchange}
+                    value={totalStock}
+                    readOnly
                   />
                 </div>
               </div>
