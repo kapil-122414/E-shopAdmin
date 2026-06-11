@@ -165,7 +165,8 @@
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ from login */
 .login-from,
-.categoryfrom {
+.categoryfrom,
+.brandfrom {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
@@ -176,7 +177,8 @@
 }
 
 .login-from form,
-.categoryfrom form {
+.categoryfrom form,
+.brandfrom form {
   width: 350px;
   background-color: white;
   padding: 25px;
@@ -197,7 +199,10 @@
 .categoryfrom input,
 .variant-box input,
 .from-right select,
-.categoryfrom select {
+.categoryfrom select,
+.brandfrom input,
+.brandfrom select,
+.brandfrom textarea {
   padding: 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
@@ -220,7 +225,8 @@
 
 .loginbtn button,
 .from-right button,
-.categoryfrom button {
+.categoryfrom button,
+.brandfrom button {
   flex: 1;
   padding: 10px;
   border: 1px solid #e8521a;
@@ -376,7 +382,8 @@
 
 .categoryfrom > form > label,
 .from-left div label,
-.from-right label {
+.from-right label,
+.brandfrom label {
   font-size: small;
   font-weight: 700;
 }
