@@ -48,8 +48,12 @@ const brandfrom = ({ form, setform, fromdata, setfromdata }) => {
         <label>Brand logo</label>
         <input type="file" placeholder="select brand img" />
         <div className="flex gap-3">
-          <button type="button">cancel</button>
-          <button type="submit">Create brand</button>
+          <button type="button" onClick={() => setform(false)}>
+            cancel
+          </button>
+          <button type="submit" className="bg-[#E8521A]">
+            Create brand
+          </button>
         </div>
       </form>
     </div>

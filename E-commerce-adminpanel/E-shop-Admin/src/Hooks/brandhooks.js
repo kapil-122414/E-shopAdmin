@@ -9,6 +9,15 @@ const brandhooks = () => {
   });
   const [image, setimage] = useState(null);
 
+  const resetfrom = () => {
+    setfromdata({
+      name: "",
+      description: "",
+      status: "",
+    });
+    setimage(null);
+  };
+
   return {
     form,
     setform,

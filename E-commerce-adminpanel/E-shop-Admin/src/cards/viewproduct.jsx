@@ -1,9 +1,9 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 const viewproduct = ({ viewdata, setview }) => {
-  
-  return (
-    <>
+
+  return (                                                                                                                                          
+    <>                                        
       <div className="viewproduct ">
         <div className=" view bg-[#000003] ">
           <FaArrowLeft
