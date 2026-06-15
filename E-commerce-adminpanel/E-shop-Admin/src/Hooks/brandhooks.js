@@ -4,7 +4,6 @@ const brandhooks = () => {
   const [form, setform] = useState(false);
   const [fromdata, setfromdata] = useState({
     name: "",
-    description: "",
     status: "",
   });
   const [image, setimage] = useState(null);
@@ -12,7 +11,6 @@ const brandhooks = () => {
   const resetfrom = () => {
     setfromdata({
       name: "",
-      description: "",
       status: "",
     });
     setimage(null);
@@ -23,6 +21,8 @@ const brandhooks = () => {
     setform,
     fromdata,
     setfromdata,
+    image,
+    setimage,
   };
 };
 

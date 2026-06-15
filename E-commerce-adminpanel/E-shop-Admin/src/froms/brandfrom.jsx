@@ -1,6 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-const brandfrom = ({ form, setform, fromdata, setfromdata }) => {
+const brandfrom = ({
+  form,
+  setform,
+  fromdata,
+  setfromdata,
+  image,
+  setimage,
+}) => {
+  const [preview, setPreview] = useState("");
+
+  const onhandleimg = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setimage(file);
+    setPreview(URL.createObjectURL(file));
+  };
+
   const onsubmit = (e) => {
     e.preventDefault();
   };
@@ -30,15 +46,8 @@ const brandfrom = ({ form, setform, fromdata, setfromdata }) => {
           value={fromdata.name}
           onChange={onchage}
         />
-        <label>Description</label>
-        <textarea
-          name="description"
-          value={fromdata.description}
-          onChange={onchage}
-          placeholder="Brief description of the brand"
-          className="border border-gray-300 rounded-lg p-10 outline-none resize-none "
-          rows="4"
-        ></textarea>
+        <label>Status</label>
+
         <select onChange={onchage} value={fromdata.status} name="status">
           <option value="">Status</option>
           <option value="active">Active</option>
@@ -46,7 +55,19 @@ const brandfrom = ({ form, setform, fromdata, setfromdata }) => {
           <option value="out of stock">Out of stock</option>
         </select>
         <label>Brand logo</label>
-        <input type="file" placeholder="select brand img" />
+        <input
+          type="file"
+          placeholder="select brand img"
+          accept="image/*"
+          onChange={onhandleimg}
+        />
+        {preview && (
+          <img
+            src={preview}
+            alt="preview"
+            className="w-full h-24 object-cover rounded"
+          />
+        )}
         <div className="flex gap-3">
           <button type="button" onClick={() => setform(false)}>
             cancel
