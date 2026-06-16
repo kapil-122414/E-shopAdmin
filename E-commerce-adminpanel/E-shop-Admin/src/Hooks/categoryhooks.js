@@ -53,7 +53,7 @@ const categoryhooks = () => {
 
       await getdata();
     } catch (error) {
-      console.log();
+      console.log("error", error.respones.data);
     } finally {
       setloading(false);
     }
@@ -116,7 +116,6 @@ const categoryhooks = () => {
     setSearch,
     status,
     setstatus,
-  
   };
 };
 

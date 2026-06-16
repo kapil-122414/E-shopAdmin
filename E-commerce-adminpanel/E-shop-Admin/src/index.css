@@ -302,7 +302,8 @@
   border: 1px solid #374151;
 }
 .dark .all-cards,
-.dark .product-table {
+.dark .product-table,
+.dark .brand-table {
   background-color: #455264;
   color: white;
 }
@@ -401,6 +402,7 @@
 .from-left div:nth-child(2) input,
 .product-table > div:nth-child(1),
 .product-table input,
+.brand-table input,
 .all-cards-search select {
   padding: 12px;
   border: 1px solid #d1d5db;
@@ -559,7 +561,8 @@
   font-size: 14px;
   width: 80%;
 }
-.product-table > div:nth-child(1) {
+.product-table > div:nth-child(1),
+.brand-table > div:nth-child(1) {
   width: 50%;
 }
 
@@ -570,11 +573,13 @@
   overflow: auto;
 }
 
-.product-table thead {
+.product-table thead,
+.brand-table thead {
   background: #f9fafb;
 }
 
-.product-table th {
+.product-table th,
+.brand-table th {
   text-align: left;
   padding: 14px;
   font-size: 14px;
@@ -587,18 +592,21 @@
   color: #e5e7eb;
 }
 
-.product-table td {
+.product-table td,
+.brand-table td {
   padding: 10px;
   font-size: 14px;
 
   border-bottom: 1px solid #e5e7eb;
 }
 
-.product-table > tbody > tr:hover {
+.product-table > tbody > tr:hover,
+.brand-table tbody tr:hover {
   background: #f9fafb;
   transition: 0.2s;
 }
-.dark .product-table tbody tr:hover {
+.dark .product-table tbody tr:hover,
+.brand-table tbody tr:hover {
   background: #717182;
   transition: 0.2s;
 }
@@ -675,4 +683,15 @@
 }
 .varintview > tbody > tr:hover {
   background-color: none;
+}
+
+/* ======================================================brand table======================= */
+.brand-table {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.brand-table table {
+  margin-top: 20px;
 }

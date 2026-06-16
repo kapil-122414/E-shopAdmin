@@ -7,6 +7,7 @@ const brandfrom = ({
   setfromdata,
   image,
   setimage,
+  brandcreate,
 }) => {
   const [preview, setPreview] = useState("");
 
@@ -17,8 +18,20 @@ const brandfrom = ({
     setPreview(URL.createObjectURL(file));
   };
 
-  const onsubmit = (e) => {
+  const onsubmit = async (e) => {
     e.preventDefault();
+    if (!fromdata.name) {
+      return alert("Brand name is required");
+    }
+
+    if (!fromdata.status) {
+      return alert("Please select status");
+    }
+
+    if (!image) {
+      return alert("Please select image");
+    }
+    brandcreate();
   };
   const onchage = (e) => {
     const { name, value } = e.target;
@@ -66,6 +79,7 @@ const brandfrom = ({
             src={preview}
             alt="preview"
             className="w-full h-24 object-cover rounded"
+            accept="image/*"
           />
         )}
         <div className="flex gap-3">

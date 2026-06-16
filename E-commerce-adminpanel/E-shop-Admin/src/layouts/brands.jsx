@@ -3,8 +3,17 @@ import Brandtable from "../cards/brandtable";
 import Brandhooks from "../Hooks/brandhooks";
 import Brandfrom from "../froms/brandfrom";
 const Brands = () => {
-  const { form, setform, fromdata, setfromdata, image, setimage } =
-    Brandhooks();
+  const {
+    form,
+    setform,
+    fromdata,
+    setfromdata,
+    image,
+    setimage,
+    brandcreate,
+    getdata,
+    setgetdata,
+  } = Brandhooks();
   return (
     <>
       <div class="p-2 flex justify-between categoy-head">
@@ -23,7 +32,7 @@ const Brands = () => {
           +Add Brand
         </div>
       </div>
-      <Brandtable />
+      <Brandtable getdata={getdata} setgetdata={setgetdata} />
       {form && (
         <Brandfrom
           setform={setform}
@@ -31,6 +40,7 @@ const Brands = () => {
           setfromdata={setfromdata}
           image={image}
           setimage={setimage}
+          brandcreate={brandcreate}
         />
       )}
     </>
