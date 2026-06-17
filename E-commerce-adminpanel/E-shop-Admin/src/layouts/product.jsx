@@ -45,7 +45,7 @@ const Product = () => {
     productview,
     viewdata,
   } = Producthooks();
-
+  
   return (
     <div>
       <div className="p-2 flex justify-between categoy-head">

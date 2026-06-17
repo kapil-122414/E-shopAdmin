@@ -99,7 +99,6 @@ const producttable = ({
                           className="cursor-pointer"
                           onClick={() => {
                             proedit(item._id);
-                            setfrom(true);
                           }}
                         />
                         <FaTrash

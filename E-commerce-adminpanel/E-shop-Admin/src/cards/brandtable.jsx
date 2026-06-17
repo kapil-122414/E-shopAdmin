@@ -24,7 +24,7 @@ const brandtable = ({ getdata, setgetdata }) => {
                   <h3>{item.name}</h3>
                 </div>
               </td>
-              <td>{item.product}</td>
+              <td>{item.productcount}</td>
               <td>{item.status}</td>
               <td>
                 <div className="flex">

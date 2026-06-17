@@ -220,6 +220,7 @@ const producthooks = () => {
       const res = await getbyid(id);
       setEditId(id);
       const product = res.data.data;
+
       setfromdata({
         productname: product.Productname,
         slug: product.slug,
@@ -239,11 +240,13 @@ const producthooks = () => {
 
       setfrom(true);
     } catch (error) {
-      console.log("error", error.response?.status);
+      console.log("Response:", error.response);
+      console.log("Message:", error.message);
     }
   };
   const updateproduct = async (id) => {
     try {
+      console.log("hyy");
       const data = new FormData();
       data.append("Productname", fromdata.productname);
       data.append("slug", fromdata.slug);

@@ -29,7 +29,7 @@ const productfrom = ({
 }) => {
   const onhandlesubmit = async (e) => {
     e.preventDefault();
-
+    console.log("editId sas =", editId);
     let success;
 
     if (editId) {
@@ -102,15 +102,7 @@ const productfrom = ({
             resetForm();
           }}
         />
-        <h2
-          onClick={() => {
-            resetForm();
-            setEditId(null);
-            setfrom(true);
-          }}
-        >
-          Add New Product
-        </h2>
+        <h2>Add New Product</h2>
         <p className="text-[#717182] text-sm">
           Fill in the details to create a new product
         </p>
@@ -268,7 +260,6 @@ const productfrom = ({
               >
                 <option value="">status</option>
                 <option value="active">Active</option>
-                <option value="inactive">InActive</option>
                 <option value="Low Stock">Low Stock</option>
                 <option value="Out of stock">Out of Stock</option>
               </select>
