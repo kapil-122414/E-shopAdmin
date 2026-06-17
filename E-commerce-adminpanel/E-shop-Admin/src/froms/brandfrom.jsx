@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 const brandfrom = ({
   form,
@@ -8,9 +8,13 @@ const brandfrom = ({
   image,
   setimage,
   brandcreate,
+  resetfrom,
+  preview,
+  setPreview,
+  update_brand,
+  editid,
+  getedit,
 }) => {
-  const [preview, setPreview] = useState("");
-
   const onhandleimg = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -28,10 +32,14 @@ const brandfrom = ({
       return alert("Please select status");
     }
 
-    if (!image) {
-      return alert("Please select image");
+    if (getedit) {
+      update_brand(getedit);
+    } else {
+      if (!image) {
+        return alert("Please select image");
+      }
+      brandcreate();
     }
-    brandcreate();
   };
   const onchage = (e) => {
     const { name, value } = e.target;
@@ -40,15 +48,21 @@ const brandfrom = ({
       [name]: value,
     }));
   };
+  useEffect(() => {}, [fromdata]);
   useEffect(() => {
-    console.log(fromdata);
-  }, [fromdata]);
+    if (typeof image === "string") {
+      setPreview(image);
+    }
+  }, [image]);
   return (
     <div className="brandfrom">
       <form onSubmit={onsubmit}>
         <FaArrowLeft
           className="text-2xl cursor-pointer"
-          onClick={() => setform(false)}
+          onClick={() => {
+            setform(false);
+            resetfrom();
+          }}
         />
         <h1>Add New Brand</h1>
         <label>Brand Name</label>
@@ -83,11 +97,18 @@ const brandfrom = ({
           />
         )}
         <div className="flex gap-3">
-          <button type="button" onClick={() => setform(false)}>
+          <button
+            type="button"
+            onClick={() => {
+              setform(false);
+              resetfrom();
+            }}
+          >
             cancel
           </button>
+
           <button type="submit" className="bg-[#E8521A]">
-            Create brand
+            {getedit ? "Update brnad" : "Create brand"}
           </button>
         </div>
       </form>

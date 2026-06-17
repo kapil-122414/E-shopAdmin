@@ -2,10 +2,12 @@ import React from "react";
 import Brandtable from "../cards/brandtable";
 import Brandhooks from "../Hooks/brandhooks";
 import Brandfrom from "../froms/brandfrom";
+
 const Brands = () => {
   const {
     form,
     setform,
+    resetfrom,
     fromdata,
     setfromdata,
     image,
@@ -13,6 +15,14 @@ const Brands = () => {
     brandcreate,
     getdata,
     setgetdata,
+    brand_delete,
+    loading,
+    setloading,
+    editid,
+    preview,
+    setPreview,
+    update_brand,
+    getedit,
   } = Brandhooks();
   return (
     <>
@@ -32,7 +42,15 @@ const Brands = () => {
           +Add Brand
         </div>
       </div>
-      <Brandtable getdata={getdata} setgetdata={setgetdata} />
+
+      <Brandtable
+        getdata={getdata}
+        setgetdata={setgetdata}
+        brand_delete={brand_delete}
+        loading={loading}
+        editid={editid}
+      />
+
       {form && (
         <Brandfrom
           setform={setform}
@@ -41,6 +59,12 @@ const Brands = () => {
           image={image}
           setimage={setimage}
           brandcreate={brandcreate}
+          resetfrom={resetfrom}
+          preview={preview}
+          setPreview={setPreview}
+          update_brand={update_brand}
+          editid={editid}
+          getedit={getedit}
         />
       )}
     </>

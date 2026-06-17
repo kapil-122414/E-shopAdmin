@@ -85,7 +85,17 @@ const producttable = ({
                     <td>{item.brand?.name}</td>
                     <td>{item.price}</td>
                     <td>{item.stock}</td>
-                    <td>{item.status}</td>
+                    <td
+                      className={
+                        item.status == "active"
+                          ? "text-green-400 font-semibold"
+                          : item.status === "low stock"
+                            ? "text-yellow-300 font-semibold"
+                            : "text-[#EF4444] font-semibold"
+                      }
+                    >
+                      {item.status}
+                    </td>
                     <td>
                       <div className="flex gap-2.5">
                         <FaEye
