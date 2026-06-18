@@ -13,6 +13,7 @@ const brandhooks = () => {
   const [getdata, setgetdata] = useState([]);
   const [preview, setPreview] = useState("");
   const [totalpage, settotalpage] = useState(1);
+  const [search, setSearch] = useState("");
   const [page, setpage] = useState(1);
   const [fromdata, setfromdata] = useState({
     name: "",
@@ -57,10 +58,13 @@ const brandhooks = () => {
     }
   };
 
-  const brandshow = async (page,totalpage) => {
+  const brandshow = async () => {
     try {
       setloading(true);
-      const res = await brandget({page,totalpage});
+      const res = await brandget(page, search);
+
+      setpage(res.data.page);
+      settotalpage(res.data.totalPages);
       setgetdata(res.data.data);
     } catch (error) {
       console.log({
@@ -128,7 +132,7 @@ const brandhooks = () => {
   };
   useEffect(() => {
     brandshow();
-  }, []);
+  }, [page, search]);
   return {
     form,
     setform,
@@ -148,6 +152,12 @@ const brandhooks = () => {
     setPreview,
     update_brand,
     getedit,
+    page,
+    setpage,
+    totalpage,
+    settotalpage,
+    search,
+    setSearch,
   };
 };
 

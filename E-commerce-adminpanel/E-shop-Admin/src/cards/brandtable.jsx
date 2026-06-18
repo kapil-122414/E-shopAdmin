@@ -1,11 +1,29 @@
 import React from "react";
 import { FaEdit, FaTrash, FaSpinner } from "react-icons/fa";
+import Pagination from "../pagination/pagination";
 
-const brandtable = ({ getdata, setgetdata, brand_delete, loading, editid }) => {
+const brandtable = ({
+  getdata,
+  setgetdata,
+  brand_delete,
+  loading,
+  editid,
+  page,
+  setpage,
+  totalpage,
+  settotalpage,
+  search,
+  setSearch,
+}) => {
   return (
     <div className="brand-table">
       <div>
-        <input type="text" placeholder="Search brands ...." />
+        <input
+          type="text"
+          placeholder="Search brands ...."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
       <table className="w-full overflow-auto">
         <thead>
@@ -27,7 +45,10 @@ const brandtable = ({ getdata, setgetdata, brand_delete, loading, editid }) => {
               <tr key={item._id}>
                 <td>
                   <div className="flex gap-2">
-                    <img src={item.Img.url} className="h-10 w-10  " />
+                    <img
+                      src={item.Img.url}
+                      className="h-10 w-10  rounded-md "
+                    />
                     <h3>{item.name}</h3>
                   </div>
                 </td>
@@ -64,6 +85,14 @@ const brandtable = ({ getdata, setgetdata, brand_delete, loading, editid }) => {
           </tbody>
         )}
       </table>
+      <div>
+        <Pagination
+          page={page}
+          setpage={setpage}
+          totalpage={totalpage}
+          settotalpage={settotalpage}
+        />
+      </div>
     </div>
   );
 };

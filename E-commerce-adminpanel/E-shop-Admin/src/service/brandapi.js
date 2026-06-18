@@ -10,8 +10,10 @@ export const brandpost = (data) =>
     },
   });
 
-export const brandget = (page, totalpage) => {
-  return api.get(`/brand`);
+export const brandget = (page, search) => {
+  return api.get(
+    `/brand?page=${page}&limit=4&search=${encodeURIComponent(search)}`,
+  );
 };
 export const branddelete = (id) => {
   return api.delete(`/brand/${id}`);
@@ -20,5 +22,9 @@ export const brandget_byid = (id) => {
   return api.get(`/brand/${id}`);
 };
 export const brandupdate = (id, data) => {
-  return api.patch(`/brand/${id}`, data);
+  return api.patch(`/brand/${id}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };

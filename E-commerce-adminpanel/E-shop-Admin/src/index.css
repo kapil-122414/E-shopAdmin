@@ -463,6 +463,8 @@
   margin-top: 20px;
   background-color: none;
   margin-left: 20px;
+  display: flex;
+  align-items: center;
 }
 .dark .pagniation {
   background-color: #455264;
@@ -470,9 +472,11 @@
 .pagniation button {
   background-color: #e8521a;
   color: #d1d5db;
-  padding: 10px 20px;
+  padding: 8px 12px;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
+  text-align: center;
 }
 /* /============================================product table =333333333340939349-------------============ */
 .product-table {

@@ -23,6 +23,12 @@ const Brands = () => {
     setPreview,
     update_brand,
     getedit,
+    page,
+    setpage,
+    totalpage,
+    settotalpage,
+    search,
+    setSearch,
   } = Brandhooks();
   return (
     <>
@@ -49,6 +55,12 @@ const Brands = () => {
         brand_delete={brand_delete}
         loading={loading}
         editid={editid}
+        page={page}
+        totalpage={totalpage}
+        setpage={setpage}
+        settotalpage={settotalpage}
+        search={search}
+        setSearch={setSearch}
       />
 
       {form && (
