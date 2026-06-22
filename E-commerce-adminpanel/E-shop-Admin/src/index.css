@@ -296,14 +296,17 @@
 .dark .categoryfrom select,
 .dark .all-cards-search select,
 .dark .from-right select,
-.dark .all-cards-search input {
+.dark .all-cards-search input,
+.dark .order-table input,
+.dark .order-table select {
   background-color: #111827;
   color: white;
   border: 1px solid #374151;
 }
 .dark .all-cards,
 .dark .product-table,
-.dark .brand-table {
+.dark .brand-table,
+.dark .order-table {
   background-color: #455264;
   color: white;
 }
@@ -360,7 +363,8 @@
   flex: 1;
   height: 100%;
 }
-.categoy-head {
+.categoy-head,
+.order-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -403,7 +407,9 @@
 .product-table > div:nth-child(1),
 .product-table input,
 .brand-table input,
-.all-cards-search select {
+.all-cards-search select,
+.order-table input,
+.order-table select {
   padding: 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
@@ -578,12 +584,14 @@
 }
 
 .product-table thead,
-.brand-table thead {
+.brand-table thead,
+.order-table thead {
   background: #f9fafb;
 }
 
 .product-table th,
-.brand-table th {
+.brand-table th,
+.order-table th {
   text-align: left;
   padding: 14px;
   font-size: 14px;
@@ -597,6 +605,7 @@
 }
 
 .product-table td,
+.order-table td,
 .brand-table td {
   padding: 10px;
   font-size: 14px;
@@ -605,7 +614,8 @@
 }
 
 .product-table > tbody > tr:hover,
-.brand-table tbody tr:hover {
+.brand-table tbody tr:hover,
+.order-table tbody tr:hover {
   background: #f9fafb;
   transition: 0.2s;
 }
@@ -690,12 +700,31 @@
 }
 
 /* ======================================================brand table======================= */
-.brand-table {
+.brand-table,
+.order-table {
   margin-top: 20px;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 10px;
 }
-.brand-table table {
+.brand-table table,
+.order-table table {
   margin-top: 20px;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++  order css+++++++++++++++++++++ */
+
+.order-header div:nth-child(2) {
+  padding: 10px 20px;
+  background-color: #1a1a2e;
+  color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.order-search {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px 20px;
+  gap: 50px;
 }
