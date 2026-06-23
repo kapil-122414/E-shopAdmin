@@ -1,12 +1,14 @@
 import React from "react";
 import { FiEye, FiEdit } from "react-icons/fi";
-const ordertable = ({ showdata }) => {
+const ordertable = ({ showdata, search, setsearch }) => {
   return (
     <div className="order-table">
       <div className="order-search">
         <input
           type="text"
           placeholder=" Search by order ID, customer, or email..."
+          value={search}
+          onChange={(e) => setsearch(e.target.value)}
         />
         <select>
           <option>status</option>
@@ -18,7 +20,7 @@ const ordertable = ({ showdata }) => {
           <option>Delivered</option>
         </select>
       </div>
-      <div className="h-[400px] overflow-auto ">
+      <div className=" overflow-auto ">
         <table class="w-full overflow-auto">
           <thead>
             <tr>

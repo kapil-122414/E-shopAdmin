@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { getapi } from "../service/order";
 const orderhooks = () => {
   const [showdata, setshowdata] = useState([]);
+  const [search, setsearch] = useState("");
   const orderdata = async () => {
     try {
-      const res = await getapi();
+      const res = await getapi(search);
 
       setshowdata(res.data.allorder);
     } catch (error) {
@@ -15,8 +16,8 @@ const orderhooks = () => {
   };
   useEffect(() => {
     orderdata();
-  }, []);
-  return { showdata, setshowdata };
+  }, [search]);
+  return { showdata, setshowdata, search, setsearch };
 };
 
 export default orderhooks;

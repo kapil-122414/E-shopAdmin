@@ -25,14 +25,16 @@ const producttable = ({
 }) => {
   return (
     <div className="product-table">
-      <div className="flex gap-2.5 items-center ">
-        <FaSearch className="text-4 " />
-        <input
-          type="text"
-          placeholder="Search name, category or sku"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+      <div className="product-search">
+        <div className="flex gap-2.5 items-center pr ">
+          <FaSearch className="text-4 " />
+          <input
+            type="text"
+            placeholder="Search name, category or sku"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
         <select value={status} onChange={(e) => setstatus(e.target.value)}>
           <option value="">Status</option>
           <option value="active">Active</option>

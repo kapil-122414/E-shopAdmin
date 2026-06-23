@@ -393,7 +393,8 @@
   font-weight: 700;
 }
 
-.all-cards-search {
+.all-cards-search,
+.product-search {
   margin: 30px 20px;
   gap: 50px;
   display: flex;
@@ -404,10 +405,10 @@
 .all-cards-search input,
 .from-left > div:nth-child(1) > input,
 .from-left div:nth-child(2) input,
-.product-table > div:nth-child(1),
-.product-table input,
+.product-search div:nth-child(1),
 .brand-table input,
 .all-cards-search select,
+.product-search select,
 .order-table input,
 .order-table select {
   padding: 12px;
@@ -563,15 +564,14 @@
 .product-table {
   height: 100%;
 }
-.product-table input {
-  padding: 2px;
+.product-search input {
   border: none;
   border-radius: 8px;
   outline: none;
   font-size: 14px;
   width: 80%;
 }
-.product-table > div:nth-child(1),
+
 .brand-table > div:nth-child(1) {
   width: 50%;
 }
@@ -620,13 +620,10 @@
   transition: 0.2s;
 }
 .dark .product-table tbody tr:hover,
-.brand-table tbody tr:hover {
+.brand-table tbody tr:hover,
+.dark .order-table tbody tr:hover {
   background: #717182;
   transition: 0.2s;
-}
-.product-table select {
-  padding: 5px;
-  outline: none;
 }
 
 /* dfdsssssssssssssssssssssssssssssssfdsssssssssssssssssssssssssssssssss view ----------------------------- */
