@@ -11,7 +11,7 @@ const Categorycard = ({
   setFormdata,
   editdata,
   seteditdata,
-  
+   
 }) => {
   return (
     <div className="category-cards">
