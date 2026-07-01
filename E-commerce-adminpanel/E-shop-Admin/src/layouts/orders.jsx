@@ -3,7 +3,8 @@ import { FiDownload } from "react-icons/fi";
 import Ordertable from "../cards/ordertable";
 import Orderhooks from "../Hooks/orderhooks";
 const Orders = () => {
-  const { showdata, setshowdata, search, setsearch } = Orderhooks();
+  const { showdata, setshowdata, search, setsearch, status, setstatus } =
+    Orderhooks();
   return (
     <div>
       <div className="order-header  ">
@@ -18,7 +19,13 @@ const Orders = () => {
           <FiDownload /> Export Orders
         </div>
       </div>
-      <Ordertable showdata={showdata} search={search} setsearch={setsearch} />
+      <Ordertable
+        showdata={showdata}
+        search={search}
+        setsearch={setsearch}
+        status={status}
+        setstatus={setstatus}
+      />
     </div>
   );
 };

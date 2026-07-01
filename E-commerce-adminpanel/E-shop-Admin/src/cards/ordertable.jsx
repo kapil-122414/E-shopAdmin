@@ -1,6 +1,7 @@
 import React from "react";
+import Pagination from "../pagination/pagination";
 import { FiEye, FiEdit } from "react-icons/fi";
-const ordertable = ({ showdata, search, setsearch }) => {
+const ordertable = ({ showdata, search, setsearch, status, setstatus }) => {
   return (
     <div className="order-table">
       <div className="order-search">
@@ -10,14 +11,14 @@ const ordertable = ({ showdata, search, setsearch }) => {
           value={search}
           onChange={(e) => setsearch(e.target.value)}
         />
-        <select>
-          <option>status</option>
-          <option>panding</option>
+        <select value={status} onChange={(e) => setstatus(e.target.value)}>
+          <option value="">status</option>
+          <option value="pending">pending</option>
 
-          <option>cancelled</option>
-          <option>shipped</option>
-          <option>Out for Delivery</option>
-          <option>Delivered</option>
+          <option value="cancelled">cancelled</option>
+          <option value="shipped">shipped</option>
+          <option value="Out for Delivery">Out for Delivery</option>
+          <option value="Delivered">Delivered</option>
         </select>
       </div>
       <div className=" overflow-auto ">
@@ -74,6 +75,9 @@ const ordertable = ({ showdata, search, setsearch }) => {
             ))}
           </tbody>
         </table>
+        <div>
+          <Pagination />
+        </div>
       </div>
     </div>
   );
