@@ -73,7 +73,7 @@ const Categories = () => {
         </div>
         <div className="categorycard">
           {loading ? (
-            <div className="flex justify-center items-center py-10">
+            <div className="w-full flex justify-center items-center py-10">
               <FaSpinner className="animate-spin text-3xl" />
             </div>
           ) : categoryies.length > 0 ? (
