@@ -11,15 +11,21 @@ import {
   FaChartBar,
   FaCog,
   FaSignOutAlt,
-  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 
-const Sidebar = ({ formData, setIslogin, islogin, search }) => {
-  const [open, setOpen] = useState(false);
-
+const Sidebar = ({ 
+  formData, 
+  setIslogin, 
+  islogin, 
+  search, 
+  isOpen,
+  onClose 
+}) => {
+  const isDesktop = typeof window !== 'undefined' && window.innerWidth > 1024;
+  const shouldShow = isDesktop || isOpen;
   const logout = () => {
     Cookies.remove("Token");
-
     console.log("remove token");
     setIslogin(false);
   };
@@ -33,64 +39,65 @@ const Sidebar = ({ formData, setIslogin, islogin, search }) => {
 
   return (
     <>
-      <div className="menu-icon">
-        <FaBars onClick={() => setOpen(true)} />
-      </div>
-
-      {open && <div className="overlay" onClick={() => setOpen(false)}></div>}
-      <div className={open ? "side-bar active" : "side-bar"}>
-        <div>
+      {shouldShow && !isDesktop && <div className="overlay" onClick={onClose}></div>}
+      <div className={`side-bar ${shouldShow ? 'active' : ''}`}>
+        <div className="sidebar-header">
           <h1>E-Shop Admin</h1>
+          {!isDesktop && (
+            <button className="sidebar-close-btn" onClick={onClose} aria-label="Close sidebar">
+              <FaTimes size={24} />
+            </button>
+          )}
         </div>
         <div>
-          <div onClick={() => navigate("/")} className={menuClass("/")}>
+          <div onClick={() => { navigate("/"); onClose(); }} className={menuClass("/")}>
             <FaTachometerAlt className="" />
             <h3>Dashboard</h3>
           </div>
           <div
-            onClick={() => navigate("/products")}
+            onClick={() => { navigate("/products"); onClose(); }}
             className={menuClass("/products")}
           >
             <FaBox />
             <h3>Products</h3>
           </div>
           <div
-            onClick={() => navigate("/categories")}
+            onClick={() => { navigate("/categories"); onClose(); }}
             className={menuClass("/categories")}
           >
             <FaList />
             <h3>Categories</h3>
           </div>
           <div
-            onClick={() => navigate("/brands")}
+            onClick={() => { navigate("/brands"); onClose(); }}
             className={menuClass("/brands")}
           >
             <FaTag />
             <h3>Brands</h3>
           </div>
           <div
-            onClick={() => navigate("/orders")}
+            onClick={() => { navigate("/orders"); onClose(); }}
             className={menuClass("/orders")}
           >
             <FaShoppingCart />
             <h3>Orders</h3>
           </div>
           <div
-            onClick={() => navigate("/customers")}
+            onClick={() => { navigate("/customers"); onClose(); }}
             className={menuClass("/customers")}
           >
             <FaUsers />
             <h3>Customers</h3>
           </div>
           <div
-            onClick={() => navigate("/analytics")}
+            onClick={() => { navigate("/analytics"); onClose(); }}
             className={menuClass("/analytics")}
           >
             <FaChartBar />
             <h3>Analytics</h3>
           </div>
           <div
-            onClick={() => navigate("/setting")}
+            onClick={() => { navigate("/setting"); onClose(); }}
             className={menuClass("/setting")}
           >
             <FaCog />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { FaBell, FaUserCircle, FaSun, FaSearch, FaMoon } from "react-icons/fa";
+import { FaBell, FaUserCircle, FaSun, FaSearch, FaMoon, FaBars } from "react-icons/fa";
 
 import LoginForm from "../ui/LoginForm";
 
@@ -12,6 +12,7 @@ const Navbar = ({
   register,
   search,
   setSearch,
+  onMenuClick,
 }) => {
   const [dark, setdark] = useState(false);
 
@@ -26,19 +27,23 @@ const Navbar = ({
   return (
     <>
       <div className="navbar bg-white dark:bg-[#111827] dark:text-white transition-all duration-300">
-        <div className="flex justify-center items-center gap-5 navleft">
-          <FaSearch className="text-[#717182]" />
-
-          <input
-            type="text"
-            placeholder="Search products, orders, customers..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="bg-transparent outline-none"
-          />
+        <div className="nav-left">
+          <div className="mobile-menu-btn" onClick={onMenuClick}>
+            <FaBars size={24} />
+          </div>
+          <div className="nav-search-wrapper">
+            <FaSearch className="text-[#717182]" />
+            <input
+              type="text"
+              placeholder="Search products, orders, customers..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="bg-transparent outline-none"
+            />
+          </div>
         </div>
 
-        <div className="flex justify-center items-center gap-5">
+        <div className="nav-right flex items-center gap-5">
           <div>
             <FaBell />
           </div>
@@ -50,17 +55,12 @@ const Navbar = ({
             {dark ? <FaMoon /> : <FaSun />}
           </div>
 
-          <div
-            className="usericon cursor-pointer"
-            onClick={() => setEditfrom(true)}
-          >
+          <div className="usericon cursor-pointer" onClick={() => setEditfrom(true)}>
             <div className="userimg">
               <FaUserCircle />
             </div>
-
             <div className="userdetails">
               <h6>kapil</h6>
-
               <p>{formData.Email}</p>
             </div>
           </div>

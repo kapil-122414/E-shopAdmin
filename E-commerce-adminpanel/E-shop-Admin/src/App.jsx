@@ -18,18 +18,19 @@ const App = () => {
   } = useAuth();
 
   const [search, setSearch] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
       {islogin ? (
         <div className="flex h-screen overflow-hidden">
-          <div>
-            <Sidebar
-              search={search}
-              formData={formData}
-              setIslogin={setIslogin}
-              islogin={islogin}
-            />
-          </div>
+          <Sidebar
+            search={search}
+            formData={formData}
+            setIslogin={setIslogin}
+            islogin={islogin}
+            isOpen={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+          />
           <div className="main-content">
             <Navbar
               editfrom={editfrom}
@@ -39,6 +40,7 @@ const App = () => {
               register={register}
               search={search}
               setSearch={setSearch}
+              onMenuClick={() => setSidebarOpen(true)}
             />
             <div className="main-content1 bg-[#F8F8F6]">
               <AppRoutes search={search} />
