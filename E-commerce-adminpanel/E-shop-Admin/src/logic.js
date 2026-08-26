@@ -175,48 +175,39 @@ import { useActionState } from "react";
 // for (let i = 0; i < cart.length; i++) {
 //   total += cart[i].price * cart[i].quantity;
 // }
-// console.log(total)
+// console.log(total);
 
-const products = {
-  product1: {
-    name: "Laptop",
-    price: 50000,
-    category: "Electronics",
-    reviews: [4, 5, 5],
+const students = {
+  s1: {
+    name: "Rahul",
+    marks: [70, 80, 90],
+    subjects: ["Math", "English", "Science"],
   },
 
-  product2: {
-    name: "Mobile",
-    price: 25000,
-    category: "Electronics",
-    reviews: [3, 4, 4],
+  s2: {
+    name: "Kapil",
+    marks: [90, 95, 88],
+    subjects: ["Math", "English", "Science"],
   },
 
-  product3: {
-    name: "Headphones",
-    price: 5000,
-    category: "Accessories",
-    reviews: [5, 5, 4],
-  },
-
-  product4: {
-    name: "Monitor",
-    price: 30000,
-    category: "Electronics",
-    reviews: [4, 5, 5],
+  s3: {
+    name: "Amit",
+    marks: [60, 75, 70],
+    subjects: ["Math", "English", "Science"],
   },
 };
 
-for (let key in products) {
-  if (
-    products[key].category === "Electronics" &&
-    products[key].price >= 30000
-  ) {
-    for (let i = 0; i < products[key].reviews.length; i++) {
-      if (products[key].reviews[i] === 5) {
-        console.log(products[key].name);
-        break
-      }
+let avg;
+
+for (let key in students) {
+  let total = 0;
+  for (let i = 0; i < students[key].marks.length; i++) {
+    total += students[key].marks[i];
+    avg = total / students[key].marks.length;
+    if (avg > 80) {
+      console.log(avg);
+      console.log(students[key].name);
+      break;
     }
   }
 }

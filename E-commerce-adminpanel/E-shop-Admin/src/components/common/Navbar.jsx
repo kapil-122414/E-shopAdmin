@@ -31,7 +31,7 @@ const Navbar = ({
           <div className="mobile-menu-btn" onClick={onMenuClick}>
             <FaBars size={24} />
           </div>
-          <div className="nav-search-wrapper">
+          <div className="nav-search-wrapper desktop-only">
             <FaSearch className="text-[#717182]" />
             <input
               type="text"
@@ -44,18 +44,21 @@ const Navbar = ({
         </div>
 
         <div className="nav-right flex items-center gap-5">
-          <div>
+          <div className="mobile-only">
+            <FaBell />
+          </div>
+          <div className="desktop-only">
             <FaBell />
           </div>
 
           <div
             onClick={() => setdark(!dark)}
-            className="cursor-pointer text-xl"
+            className="cursor-pointer text-xl desktop-only"
           >
             {dark ? <FaMoon /> : <FaSun />}
           </div>
 
-          <div className="usericon cursor-pointer" onClick={() => setEditfrom(true)}>
+          <div className="usericon cursor-pointer desktop-only" onClick={() => setEditfrom(true)}>
             <div className="userimg">
               <FaUserCircle />
             </div>

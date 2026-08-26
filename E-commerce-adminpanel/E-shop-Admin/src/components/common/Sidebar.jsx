@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import {
@@ -12,6 +12,11 @@ import {
   FaCog,
   FaSignOutAlt,
   FaTimes,
+  FaBell,
+  FaSun,
+  FaMoon,
+  FaSearch,
+  FaUserCircle,
 } from "react-icons/fa";
 
 const Sidebar = ({ 
@@ -19,11 +24,22 @@ const Sidebar = ({
   setIslogin, 
   islogin, 
   search, 
+  setSearch,
   isOpen,
   onClose 
 }) => {
   const isDesktop = typeof window !== 'undefined' && window.innerWidth > 1024;
   const shouldShow = isDesktop || isOpen;
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [dark]);
+
   const logout = () => {
     Cookies.remove("Token");
     console.log("remove token");
@@ -49,7 +65,47 @@ const Sidebar = ({
             </button>
           )}
         </div>
-        <div>
+
+        {!isDesktop && (
+          <div className="sidebar-mobile-content">
+            <div className="sidebar-search">
+              <FaSearch className="text-[#717182]" />
+              <input
+                type="text"
+                placeholder="Search products, orders, customers..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="bg-transparent outline-none w-full"
+              />
+            </div>
+
+            <div className="sidebar-user-info" onClick={() => { /* handle profile click */ onClose(); }}>
+              <div className="userimg">
+                <FaUserCircle />
+              </div>
+              <div className="userdetails">
+                <h6>kapil</h6>
+                <p>{formData?.Email || ""}</p>
+              </div>
+            </div>
+
+            <div className="sidebar-actions">
+              <button onClick={() => setDark(!dark)} className="cursor-pointer text-xl">
+                {dark ? <FaMoon /> : <FaSun />}
+              </button>
+              <button onClick={logout} className="logout-btn">
+                <FaSignOutAlt />
+                <span>Logout</span>
+              </button>
+            </div>
+
+            <div className="sidebar-notification">
+              <FaBell />
+            </div>
+          </div>
+        )}
+
+        <div className="sidebar-menu">
           <div onClick={() => { navigate("/"); onClose(); }} className={menuClass("/")}>
             <FaTachometerAlt className="" />
             <h3>Dashboard</h3>
@@ -104,7 +160,8 @@ const Sidebar = ({
             <h3>Setting</h3>
           </div>
         </div>
-        <div onClick={logout} className="logout">
+        
+        <div onClick={logout} className="logout desktop-only">
           <FaSignOutAlt />
           <h3>logout</h3>
         </div>
