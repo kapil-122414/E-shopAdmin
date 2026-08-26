@@ -3,7 +3,7 @@ import { FiDownload } from "react-icons/fi";
 import OrderTable from "../../components/ui/OrderTable";
 import useOrders from "./useOrders";
 const Orders = () => {
-  const { showdata, setshowdata, search, setsearch, status, setstatus } =
+  const { showdata, setshowdata, search, setsearch, status, setstatus, loading } =
     useOrders();
   return (
     <div>
@@ -25,6 +25,7 @@ const Orders = () => {
         setsearch={setsearch}
         status={status}
         setstatus={setstatus}
+        loading={loading}
       />
     </div>
   );

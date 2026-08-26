@@ -1,7 +1,8 @@
 import React from "react";
 import Pagination from "../common/Pagination";
 import { FiEye, FiEdit } from "react-icons/fi";
-const ordertable = ({ showdata, search, setsearch, status, setstatus }) => {
+import { FaSpinner } from "react-icons/fa";
+const ordertable = ({ showdata, search, setsearch, status, setstatus, loading }) => {
   return (
     <div className="order-table">
       <div className="order-search">
@@ -36,8 +37,17 @@ const ordertable = ({ showdata, search, setsearch, status, setstatus }) => {
           </thead>
 
           <tbody>
-            {showdata.map((item) => (
-              <tr key={item._id}>
+            {loading ? (
+              <tr>
+                <td colSpan={7}>
+                  <div className="flex justify-center items-center py-10">
+                    <FaSpinner className="animate-spin text-3xl" />
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              showdata.map((item) => (
+                <tr key={item._id}>
                 <td>ORD-{item._id.slice(-6)}</td>
                 <td>
                   <div>
@@ -72,7 +82,8 @@ const ordertable = ({ showdata, search, setsearch, status, setstatus }) => {
                   </div>
                 </td>
               </tr>
-            ))}
+              ))
+            )}
           </tbody>
         </table>
         <div>
