@@ -31,7 +31,7 @@ const Navbar = ({
           <div className="mobile-menu-btn" onClick={onMenuClick}>
             <FaBars size={24} />
           </div>
-          <div className="nav-search-wrapper desktop-only">
+          <div className="nav-search-wrapper">
             <FaSearch className="text-[#717182]" />
             <input
               type="text"
@@ -44,16 +44,13 @@ const Navbar = ({
         </div>
 
         <div className="nav-right flex items-center gap-5">
-          <div className="mobile-only">
-            <FaBell />
-          </div>
-          <div className="desktop-only">
+          <div>
             <FaBell />
           </div>
 
           <div
             onClick={() => setdark(!dark)}
-            className="cursor-pointer text-xl desktop-only"
+            className="cursor-pointer text-xl"
           >
             {dark ? <FaMoon /> : <FaSun />}
           </div>
