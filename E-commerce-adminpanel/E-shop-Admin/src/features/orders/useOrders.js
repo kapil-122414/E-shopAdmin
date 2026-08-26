@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import { getapi } from "../service/order";
-const orderhooks = () => {
+import { getapi } from "./api";
+const useOrders = () => {
   const [showdata, setshowdata] = useState([]);
   const [search, setsearch] = useState("");
   const [status, setstatus] = useState("");
@@ -21,4 +21,4 @@ const orderhooks = () => {
   return { showdata, setshowdata, search, setsearch, status, setstatus };
 };
 
-export default orderhooks;
+export default useOrders;

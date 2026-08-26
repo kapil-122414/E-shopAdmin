@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Sidebar from "./layouts/sidebar";
-import Navbar from "./layouts/navbar";
-import Loginfromdata from "./froms/loginfrom";
-import useLoginform from "./Hooks/loginfrom";
+import Sidebar from "./components/common/Sidebar";
+import Navbar from "./components/common/Navbar";
+import LoginForm from "./components/ui/LoginForm";
+import useAuth from "./features/auth/useAuth";
 
-import Routers from "./routes/siderouters";
+import AppRoutes from "./routes/AppRoutes";
 
 const App = () => {
   const {
@@ -15,7 +15,7 @@ const App = () => {
     setIslogin,
     formData,
     setFormData,
-  } = useLoginform();
+  } = useAuth();
 
   const [search, setSearch] = useState("");
   return (
@@ -41,12 +41,12 @@ const App = () => {
               setSearch={setSearch}
             />
             <div className="main-content1 bg-[#F8F8F6]">
-              <Routers search={search} />
+              <AppRoutes search={search} />
             </div>
           </div>
         </div>
       ) : (
-        <Loginfromdata
+        <LoginForm
           editfrom={false}
           setEditfrom={setEditfrom}
           formData={formData}

@@ -1,13 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "../layouts/dashboard";
-import Product from "../layouts/product";
-import Categories from "../layouts/categories";
-import Orders from "../layouts/orders";
-import Brands from "../layouts/brands";
-import Analytics from "../layouts/Analytics";
-import Setting from "../layouts/Setting";
-import Customers from "../layouts/customers";
+import Dashboard from "../features/dashboard/DashboardPage";
+import Product from "../features/products/ProductPage";
+import Categories from "../features/categories/CategoriesPage";
+import Orders from "../features/orders/OrdersPage";
+import Brands from "../features/brands/BrandsPage";
+import Analytics from "../features/analytics/AnalyticsPage";
+import Settings from "../features/settings/SettingsPage";
+import Customers from "../features/customers/CustomersPage";
 
 const Routers = ({ search }) => {
   return (
@@ -19,7 +19,7 @@ const Routers = ({ search }) => {
       <Route path="/orders" element={<Orders search={search} />} />
       <Route path="/customers" element={<Customers search={search} />} />
       <Route path="/analytics" element={<Analytics search={search} />} />
-      <Route path="/setting" element={<Setting search={search} />} />
+      <Route path="/setting" element={<Settings search={search} />} />
     </Routes>
   );
 };

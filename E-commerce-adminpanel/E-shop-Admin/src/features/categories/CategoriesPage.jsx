@@ -1,9 +1,8 @@
 import React from "react";
-import Categoryfrom from "../froms/categoryfrom";
-
-import Categoryhooks from "../Hooks/categoryhooks";
-import Pagination from "../pagination/pagination";
-import Categorycard from "../cards/categorycard";
+import CategoryForm from "../../components/ui/CategoryForm";
+import useCategories from "./useCategories";
+import Pagination from "../../components/common/Pagination";
+import CategoryCard from "../../components/ui/CategoryCard";
 import { FaSpinner } from "react-icons/fa";
 const Categories = () => {
   const {
@@ -26,7 +25,7 @@ const Categories = () => {
     setSearch,
     status,
     setstatus,
-  } = Categoryhooks();
+  } = useCategories();
 
   return (
     <div className="categories">
@@ -81,7 +80,7 @@ const Categories = () => {
             categoryies.map((item) => {
               return (
                 <div key={item._id}>
-                  <Categorycard
+                  <CategoryCard
                     item={item}
                     deletedata={deletedata}
                     updatedata={updatedata}
@@ -107,7 +106,7 @@ const Categories = () => {
       </div>
 
       {from && (
-        <Categoryfrom
+        <CategoryForm
           from={from}
           setFrom={setFrom}
           formdata={formdata}

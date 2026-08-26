@@ -5,9 +5,9 @@ import {
   branddelete,
   brandget_byid,
   brandupdate,
-} from "../service/brandapi";
+} from "./api";
 
-const brandhooks = () => {
+const useBrands = () => {
   const [form, setform] = useState(false);
   const [image, setimage] = useState(null);
   const [getdata, setgetdata] = useState([]);
@@ -161,4 +161,4 @@ const brandhooks = () => {
   };
 };
 
-export default brandhooks;
+export default useBrands;

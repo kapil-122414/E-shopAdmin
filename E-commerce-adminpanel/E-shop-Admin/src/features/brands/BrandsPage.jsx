@@ -1,7 +1,7 @@
 import React from "react";
-import Brandtable from "../cards/brandtable";
-import Brandhooks from "../Hooks/brandhooks";
-import Brandfrom from "../froms/brandfrom";
+import BrandTable from "../../components/ui/BrandTable";
+import useBrands from "./useBrands";
+import BrandForm from "../../components/ui/BrandForm";
 
 const Brands = () => {
   const {
@@ -29,7 +29,7 @@ const Brands = () => {
     settotalpage,
     search,
     setSearch,
-  } = Brandhooks();
+  } = useBrands();
   return (
     <>
       <div class="p-2 flex justify-between categoy-head">
@@ -49,7 +49,7 @@ const Brands = () => {
         </div>
       </div>
 
-      <Brandtable
+      <BrandTable
         getdata={getdata}
         setgetdata={setgetdata}
         brand_delete={brand_delete}
@@ -64,7 +64,7 @@ const Brands = () => {
       />
 
       {form && (
-        <Brandfrom
+        <BrandForm
           setform={setform}
           fromdata={fromdata}
           setfromdata={setfromdata}

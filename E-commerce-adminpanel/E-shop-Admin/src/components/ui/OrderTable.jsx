@@ -1,5 +1,5 @@
 import React from "react";
-import Pagination from "../pagination/pagination";
+import Pagination from "../common/Pagination";
 import { FiEye, FiEdit } from "react-icons/fi";
 const ordertable = ({ showdata, search, setsearch, status, setstatus }) => {
   return (

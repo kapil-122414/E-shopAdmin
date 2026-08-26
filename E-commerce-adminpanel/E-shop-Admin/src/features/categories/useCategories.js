@@ -5,8 +5,8 @@ import {
   categorypost,
   categorydelete,
   categoryupdate,
-} from "../service/categoryapi";
-const categoryhooks = () => {
+} from "./api";
+const useCategories = () => {
   const [from, setFrom] = useState(false);
   const [categoryies, setcategoryies] = useState([]);
   const [editdata, seteditdata] = useState(null);
@@ -119,4 +119,4 @@ const categoryhooks = () => {
   };
 };
 
-export default categoryhooks;
+export default useCategories;

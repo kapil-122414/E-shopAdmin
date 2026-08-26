@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { FaBell, FaUserCircle, FaSun, FaSearch, FaMoon } from "react-icons/fa";
 
-import Loginfromdata from "../froms/loginfrom";
+import LoginForm from "../ui/LoginForm";
 
 const Navbar = ({
   editfrom,
@@ -68,7 +68,7 @@ const Navbar = ({
       </div>
 
       {editfrom && (
-        <Loginfromdata
+        <LoginForm
           editfrom={editfrom}
           setEditfrom={setEditfrom}
           formData={formData}

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowLeft, FaMagic } from "react-icons/fa";
 
-import Variant from "./variant";
+import Variant from "./Variant";
 const productfrom = ({
   from,
   setfrom,

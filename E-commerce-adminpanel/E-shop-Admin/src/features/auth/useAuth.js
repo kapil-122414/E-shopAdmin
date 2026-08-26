@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { createuser } from "../service/loginapi";
+import { createuser } from "./api";
 import Cookie from "js-cookie";
 
-const useLoginform = () => {
+const useAuth = () => {
   const [editfrom, setEditfrom] = useState(false);
 
   const [islogin, setIslogin] = useState(!!Cookie.get("Token"));
@@ -44,4 +44,4 @@ const useLoginform = () => {
   };
 };
 
-export default useLoginform;
+export default useAuth;

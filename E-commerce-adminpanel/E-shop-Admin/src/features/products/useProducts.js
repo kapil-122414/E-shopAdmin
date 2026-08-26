@@ -8,8 +8,8 @@ import {
   productdelete,
   productedit,
   getbyid,
-} from "../service/productapi";
-const producthooks = () => {
+} from "./api";
+const useProducts = () => {
   const [image, setImage] = useState(null);
   const [from, setfrom] = useState(false);
   const [imageFile, setImageFile] = useState(null);
@@ -334,4 +334,4 @@ const producthooks = () => {
   };
 };
 
-export default producthooks;
+export default useProducts;

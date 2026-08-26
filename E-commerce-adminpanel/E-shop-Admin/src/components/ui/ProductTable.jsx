@@ -1,7 +1,7 @@
 import React from "react";
 import { FaSearch, FaEye, FaEdit, FaTrash, FaSpinner } from "react-icons/fa";
-import Pagination from "../pagination/pagination";
-import Viewproduct from "./viewproduct";
+import Pagination from "../common/Pagination";
+import ViewProduct from "./ViewProduct";
 const producttable = ({
   from,
   setfrom,
@@ -128,7 +128,7 @@ const producttable = ({
           <div>
             <Pagination totalpage={totalpage} page={page} setpage={setpage} />
           </div>
-          {view && <Viewproduct viewdata={viewdata} setview={setview} />}
+          {view && <ViewProduct viewdata={viewdata} setview={setview} />}
         </>
       )}
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
-import Producttable from "../cards/producttable";
-import Producthooks from "../Hooks/producthooks";
-import Productfrom from "../froms/productfrom";
+import ProductTable from "../../components/ui/ProductTable";
+import useProducts from "./useProducts";
+import ProductForm from "../../components/ui/ProductForm";
 
 const Product = () => {
   const {
@@ -44,7 +44,7 @@ const Product = () => {
     setview,
     productview,
     viewdata,
-  } = Producthooks();
+  } = useProducts();
   
   return (
     <div>
@@ -60,7 +60,7 @@ const Product = () => {
         </div>
       </div>
       <div>
-        <Producttable
+        <ProductTable
           productdata={productdata}
           setProductdata={setProductdata}
           search={search}
@@ -83,7 +83,7 @@ const Product = () => {
       </div>
 
       {from && (
-        <Productfrom
+        <ProductForm
           from={from}
           setfrom={setfrom}
           variants={variants}

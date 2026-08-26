@@ -1,6 +1,6 @@
 import React from "react";
 import { FaEdit, FaTrash, FaSpinner } from "react-icons/fa";
-import Pagination from "../pagination/pagination";
+import Pagination from "../common/Pagination";
 
 const brandtable = ({
   getdata,
