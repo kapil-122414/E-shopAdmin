@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-import { FaBell, FaUserCircle, FaSun, FaSearch, FaMoon, FaBars } from "react-icons/fa";
+import {
+  FaBell,
+  FaUserCircle,
+  FaSun,
+  FaSearch,
+  FaMoon,
+  FaBars,
+} from "react-icons/fa";
 
 import LoginForm from "../ui/LoginForm";
 
@@ -55,7 +62,10 @@ const Navbar = ({
             {dark ? <FaMoon /> : <FaSun />}
           </div>
 
-          <div className="usericon cursor-pointer desktop-only" onClick={() => setEditfrom(true)}>
+          <div
+            className="usericon cursor-pointer desktop-only "
+            onClick={() => setEditfrom(true)}
+          >
             <div className="userimg">
               <FaUserCircle />
             </div>

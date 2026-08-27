@@ -2,14 +2,9 @@ import React from "react";
 
 const Dashboard = () => {
   return (
-    <>
-      <div>
-        <h3>Dashboard Overview</h3>
-        <p className="text-[#717182] text-sm">
-          Welcome back! Here's what's happening with your store today.
-        </p>
-      </div>
-    </>
+    <div className="h-full min-h-[calc(100vh-120px)]">
+      <p className="text-gray-500 text-center py-10">Dashboard is empty</p>
+    </div>
   );
 };
 

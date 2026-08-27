@@ -2,6 +2,7 @@ import React from "react";
 import ProductTable from "../../components/ui/ProductTable";
 import useProducts from "./useProducts";
 import ProductForm from "../../components/ui/ProductForm";
+import { FaPlus } from "react-icons/fa";
 
 const Product = () => {
   const {
@@ -45,21 +46,25 @@ const Product = () => {
     productview,
     viewdata,
   } = useProducts();
-  
+
   return (
-    <div>
-      <div className="p-2 flex justify-between categoy-head">
+    <div className="product-page">
+      <div className="categoy-head">
         <div>
-          <h3> Product Management</h3>
-          <p className="text-[#717182] text-sm ">
+          <h3>Product Management</h3>
+          <p className="text-[#717182] text-sm">
             Manage your product inventory
           </p>
         </div>
-        <div className="px-6 py-3" onClick={() => setfrom(true)}>
-          + Add Product
-        </div>
+        <button
+          onClick={() => setfrom(true)}
+          className="btn-add-product flex items-center gap-2 !px-4 !py-2 bg-[#e8521a] text-white rounded-lg hover:bg-[#dc4a1a] transition-colors"
+        >
+          <FaPlus size={18} />
+          <span>Add Product</span>
+        </button>
       </div>
-      <div>
+      <div className="product-table-wrapper">
         <ProductTable
           productdata={productdata}
           setProductdata={setProductdata}

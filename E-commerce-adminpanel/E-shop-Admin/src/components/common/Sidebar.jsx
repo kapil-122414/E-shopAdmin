@@ -109,21 +109,6 @@ const Sidebar = ({
           </div>
         </div>
 
-        {/* Profile at end, above logout - mobile only */}
-        {!isDesktop && (
-          <div className="sidebar-profile mobile-only">
-            <div className="sidebar-user-info" onClick={() => { onClose(); }}>
-              <div className="userimg">
-                <FaUserCircle />
-              </div>
-              <div className="userdetails">
-                <h6>kapil</h6>
-                <p>{formData?.Email || ""}</p>
-              </div>
-            </div>
-          </div>
-        )}
-
         <div onClick={logout} className="logout">
           <FaSignOutAlt />
           <h3>logout</h3>
