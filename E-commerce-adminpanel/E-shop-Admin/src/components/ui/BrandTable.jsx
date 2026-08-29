@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEdit, FaTrash, FaSpinner } from "react-icons/fa";
+import { FaEdit, FaTrash, FaSpinner, FaSearch } from "react-icons/fa";
 import Pagination from "../common/Pagination";
 
 const brandtable = ({
@@ -17,13 +17,17 @@ const brandtable = ({
 }) => {
   return (
     <div className="brand-table">
-      <div>
-        <input
-          type="text"
-          placeholder="Search brands ...."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+      <div className="brand-search">
+        <div className="brand-search-input-wrapper">
+          <FaSearch className="brand-search-icon" />
+          <input
+            type="text"
+            placeholder="Search brands..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="brand-search-input"
+          />
+        </div>
       </div>
       <div className="overflow-auto">
         <table className="w-full">
