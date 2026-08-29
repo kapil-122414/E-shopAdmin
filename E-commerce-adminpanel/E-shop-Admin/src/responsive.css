@@ -697,3 +697,77 @@
     font-size: 13px;
   }
 }
+
+/* Category Search Responsive - matching product search */
+@media (max-width: 1024px) {
+  .category-search {
+    gap: 10px;
+  }
+  .category-search-input-wrapper {
+    min-width: 200px;
+  }
+  .category-search-select {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .category-search-input-wrapper {
+    width: 100%;
+    min-width: 0;
+  }
+  .category-search-select {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-search-input,
+  .category-search-select {
+    height: 40px;
+    font-size: 13px;
+  }
+}
+
+/* Order Search Responsive - matching product search */
+@media (max-width: 1024px) {
+  .order-search {
+    gap: 10px;
+  }
+  .order-search-input-wrapper {
+    min-width: 200px;
+  }
+  .order-search-select {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .order-search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .order-search-input-wrapper {
+    width: 100%;
+    min-width: 0;
+  }
+  .order-search-select {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-search-input,
+  .order-search-select {
+    height: 40px;
+    font-size: 13px;
+  }
+}
