@@ -30,7 +30,7 @@ const brandtable = ({
         </div>
       </div>
       <div className="overflow-auto">
-        <table className="w-full">
+        <table className="w-full" style={{minWidth: '600px'}}>
           <thead>
             <tr>
               <th>Brand</th>

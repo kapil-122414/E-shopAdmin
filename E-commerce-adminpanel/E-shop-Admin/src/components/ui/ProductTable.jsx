@@ -56,7 +56,7 @@ const producttable = ({
       ) : (
         <>
           <div className="overflow-auto">
-            <table>
+            <table style={{minWidth: '800px'}}>
               <thead>
                 <tr>
                   <th>Product</th>

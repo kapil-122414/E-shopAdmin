@@ -25,8 +25,8 @@ const ordertable = ({ showdata, search, setsearch, status, setstatus, loading })
           <option value="Delivered">Delivered</option>
         </select>
       </div>
-      <div className=" overflow-auto ">
-        <table class="w-full overflow-auto">
+      <div className="overflow-auto">
+        <table className="w-full" style={{minWidth: '800px'}}>
           <thead>
             <tr>
               <th>Order ID</th>

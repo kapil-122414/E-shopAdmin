@@ -481,6 +481,14 @@
     overflow-x: auto;
     overflow-y: auto;
   }
+
+  .brand-table {
+    overflow-x: auto;
+  }
+  
+  .brand-table table {
+    min-width: 600px;
+  }
 }
 
 @media (max-width: 480px) {
