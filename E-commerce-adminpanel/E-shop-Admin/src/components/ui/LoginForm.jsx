@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 
 const Loginfromdata = ({
   editfrom,
@@ -7,6 +8,7 @@ const Loginfromdata = ({
   setFormData,
   register,
 }) => {
+  const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -16,9 +18,14 @@ const Loginfromdata = ({
   };
 
   const onhandsubmit = async (e) => {
-    setEditfrom(false);
     e.preventDefault();
-    await register();
+    setLoading(true);
+    try {
+      await register();
+    } finally {
+      setLoading(false);
+      setEditfrom(false);
+    }
   };
 
   return (
@@ -44,9 +51,11 @@ const Loginfromdata = ({
         />
 
         <div className="flex gap-5 loginbtn">
-          <button type="submit">{editfrom ? "Edit" : "login"}</button>
+          <button type="submit" disabled={loading}>
+            {loading ? <FaSpinner className="animate-spin" /> : editfrom ? "Edit" : "login"}
+          </button>
 
-          {editfrom && (
+          {editfrom && !loading && (
             <button type="button" onClick={() => setEditfrom(false)}>
               Cancel
             </button>
