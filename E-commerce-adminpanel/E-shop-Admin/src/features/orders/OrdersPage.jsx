@@ -7,17 +7,18 @@ const Orders = () => {
     useOrders();
   return (
     <div>
-      <div className="order-header  ">
+      <div className="order-header">
         <div>
-          <h1> Orders Management</h1>
-          <p class="text-[#717182] text-sm ">
+          <h1>Orders Management</h1>
+          <p className="text-[#717182] text-sm">
             Track and manage customer orders
           </p>
         </div>
 
-        <div className="flex justify-center text-center items-center gap-1.5">
-          <FiDownload /> Export Orders
-        </div>
+        <button className="export-btn flex items-center gap-2">
+          <FiDownload size={18} />
+          <span>Export Orders</span>
+        </button>
       </div>
       <OrderTable
         showdata={showdata}

@@ -24,7 +24,7 @@ const producttable = ({
   viewdata,
 }) => {
   return (
-    <div className="product-table">
+    <div>
       <div className="product-search">
         <div className="product-search-input-wrapper">
           <FaSearch className="product-search-icon" />

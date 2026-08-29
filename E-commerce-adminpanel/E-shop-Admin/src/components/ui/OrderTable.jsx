@@ -1,23 +1,26 @@
 import React from "react";
 import Pagination from "../common/Pagination";
-import { FiEye, FiEdit } from "react-icons/fi";
+import { FiEye, FiEdit, FiSearch } from "react-icons/fi";
 import { FaSpinner } from "react-icons/fa";
 const ordertable = ({ showdata, search, setsearch, status, setstatus, loading }) => {
   return (
     <div className="order-table">
       <div className="order-search">
-        <input
-          type="text"
-          placeholder=" Search by order ID, customer, or email..."
-          value={search}
-          onChange={(e) => setsearch(e.target.value)}
-        />
-        <select value={status} onChange={(e) => setstatus(e.target.value)}>
-          <option value="">status</option>
-          <option value="pending">pending</option>
-
-          <option value="cancelled">cancelled</option>
-          <option value="shipped">shipped</option>
+        <div className="order-search-input-wrapper">
+          <FiSearch className="order-search-icon" />
+          <input
+            type="text"
+            placeholder="Search by order ID, customer, or email..."
+            value={search}
+            onChange={(e) => setsearch(e.target.value)}
+            className="order-search-input"
+          />
+        </div>
+        <select value={status} onChange={(e) => setstatus(e.target.value)} className="order-search-select">
+          <option value="">Status</option>
+          <option value="pending">Pending</option>
+          <option value="cancelled">Cancelled</option>
+          <option value="shipped">Shipped</option>
           <option value="Out for Delivery">Out for Delivery</option>
           <option value="Delivered">Delivered</option>
         </select>

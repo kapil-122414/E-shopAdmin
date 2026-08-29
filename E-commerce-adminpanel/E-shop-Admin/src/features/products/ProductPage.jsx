@@ -58,14 +58,15 @@ const Product = () => {
         </div>
         <button
           onClick={() => setfrom(true)}
-          className="btn-add-product flex items-center gap-2 !px-4 !py-2 bg-[#e8521a] text-white rounded-lg hover:bg-[#dc4a1a] transition-colors"
+          className="btn-add-product flex items-center gap-2 px-4 py-2 bg-[#e8521a] text-white rounded-lg hover:bg-[#dc4a1a] transition-colors"
         >
           <FaPlus size={18} />
           <span>Add Product</span>
         </button>
       </div>
       <div className="product-table-wrapper">
-        <ProductTable
+        <div className="product-table">
+          <ProductTable
           productdata={productdata}
           setProductdata={setProductdata}
           search={search}
@@ -85,6 +86,7 @@ const Product = () => {
           productview={productview}
           viewdata={viewdata}
         />
+        </div>
       </div>
 
       {from && (

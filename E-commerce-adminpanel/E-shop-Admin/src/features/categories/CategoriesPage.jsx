@@ -47,7 +47,7 @@ const Categories = () => {
               Img: null,
             });
           }}
-          className="btn-add-category flex items-center gap-2 !px-4 !py-2 bg-[#e8521a] text-white rounded-lg hover:bg-[#dc4a1a] transition-colors"
+          className="btn-add-category flex items-center gap-2 px-4 py-2 bg-[#e8521a] text-white rounded-lg hover:bg-[#dc4a1a] transition-colors"
         >
           <FaPlus size={18} />
           <span>Add Category</span>
