@@ -577,8 +577,8 @@
 /* +++++++++++++++++++++++++++++++++++++++++++categories++++++++++++++++++++++++++++++++ */
 .categories {
   flex: 1;
-  height: 100%;
-  padding: 20px;
+  height: 500px;
+
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -656,7 +656,6 @@
   background: #ffffff;
   border: 1px solid #0000001a;
   border-radius: 10px;
-  overflow: hidden;
 }
 .category-cards-grid {
   display: flex;

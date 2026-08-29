@@ -242,12 +242,32 @@
     padding: 15px;
     gap: 15px;
   }
+
+  .category-cards-container {
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .category-cards-grid {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
 }
 
 @media (max-width: 480px) {
   .category-cards-grid {
     padding: 10px;
     gap: 10px;
+  }
+
+  .category-cards-container {
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .category-cards-grid {
+    flex-wrap: nowrap;
+    min-width: max-content;
   }
 }
 
