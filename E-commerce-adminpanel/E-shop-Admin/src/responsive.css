@@ -771,3 +771,32 @@
     font-size: 13px;
   }
 }
+
+/* Brand Search Responsive - matching product search */
+@media (max-width: 1024px) {
+  .brand-search {
+    gap: 10px;
+  }
+  .brand-search-input-wrapper {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .brand-search-input-wrapper {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-search-input {
+    height: 40px;
+    font-size: 13px;
+  }
+}
