@@ -478,11 +478,6 @@
   border-bottom: 1px solid #374151;
 }
 
-.dark .navbar > div:nth-child(1) {
-  background-color: #1f2937;
-  border: 1px solid #374151;
-}
-
 .dark .navbar input {
   color: white;
   background-color: transparent;
@@ -559,8 +554,7 @@
 .dark .order-search-input:focus,
 .dark .brand-search-input:focus,
 .dark .unified-search-input:focus {
-  border-color: #e8521a;
-  box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.3);
+  outline: none;
 }
 
 .dark .product-search-select,
