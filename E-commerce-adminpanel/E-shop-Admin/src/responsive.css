@@ -176,11 +176,11 @@
     gap: 10px;
     padding: 10px 0;
   }
-  
+
   .categoy-head > div:first-child {
     width: 100%;
   }
-  
+
   .categoy-head > div:nth-child(2) {
     width: 100%;
     text-align: center;
@@ -194,11 +194,11 @@
     gap: 10px;
     padding: 15px;
   }
-  
+
   .category-search-input-wrapper {
     min-width: 200px;
   }
-  
+
   .category-search-select {
     min-width: 180px;
   }
@@ -211,12 +211,12 @@
     padding: 15px;
     gap: 10px;
   }
-  
+
   .category-search-input-wrapper {
     width: 100%;
     min-width: 0;
   }
-  
+
   .category-search-select {
     width: 100%;
     min-width: 0;
@@ -227,7 +227,7 @@
   .category-search {
     padding: 10px;
   }
-  
+
   .category-search-input,
   .category-search-select {
     height: 40px;
@@ -239,25 +239,22 @@
 /* Category cards grid responsive */
 @media (max-width: 768px) {
   .category-cards-grid {
-    padding: 15px;
+    /* padding: 15px; */
     gap: 15px;
   }
 
   .category-cards-container {
-    overflow-x: auto;
+    /* overflow-x: auto; */
     padding-bottom: 10px;
+    /* height: 500px; */
   }
 }
 
 @media (max-width: 480px) {
-  .category-cards-grid {
-    padding: 10px;
-    gap: 10px;
-  }
-
   .category-cards-container {
-    overflow-x: auto;
+    /* overflow-x: auto; */
     padding-bottom: 10px;
+    /* height: 500px; */
   }
 }
 
@@ -378,13 +375,12 @@
   }
 
   .editdiv {
-    flex-direction: column;
     gap: 8px;
   }
 
   .editdiv > button {
     width: 100%;
-    padding: 8px 16px !important;
+    padding: 8px 30px !important;
   }
 }
 
@@ -486,7 +482,7 @@
     margin: 0;
     border-radius: 8px;
   }
-  
+
   .product-table .overflow-auto {
     overflow-x: auto;
     overflow-y: auto;
@@ -495,7 +491,7 @@
   .brand-table {
     overflow-x: auto;
   }
-  
+
   .brand-table table {
     min-width: 600px;
   }
@@ -512,7 +508,7 @@
     flex-wrap: wrap;
     gap: 4px;
   }
-  
+
   .product-search input,
   .product-search select {
     height: 40px;
@@ -808,7 +804,6 @@
   }
   .brand-search-input-wrapper {
     width: 100%;
-    min-width: 0;
   }
 }
 
