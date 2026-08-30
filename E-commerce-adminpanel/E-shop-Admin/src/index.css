@@ -450,7 +450,8 @@
   gap: 8px;
 }
 .loginbtn > button:hover,
-.categoryfrom button:hover {
+.categoryfrom button:hover,
+.brandfrom button:hover {
   background-color: #e8521a;
   color: white;
 }
@@ -500,7 +501,8 @@
 }
 
 .dark .login-from form,
-.dark .categoryfrom form {
+.dark .categoryfrom form,
+.dark .brandfrom form {
   background-color: #1f2937;
   color: white;
 }
@@ -508,16 +510,77 @@
 .dark .login-from input,
 .dark .categoryfrom input,
 .dark .categoryfrom select,
+.dark .brandfrom input,
+.dark .brandfrom select,
+.dark .brandfrom textarea,
 .dark .all-cards-search select,
 .dark .from-right select,
 .dark .all-cards-search input,
 .dark .order-table input,
 .dark .order-table select,
-.dark .order-search-input-wrapper {
+.dark .order-search-input-wrapper,
+.dark .all-cards-search,
+.dark .all-cards-search-input-wrapper {
   background-color: #111827;
   color: white;
   /* border: 1px solid #374151; */
 }
+
+.dark .product-search,
+.dark .category-search,
+.dark .order-search,
+.dark .brand-search,
+.dark .unified-search {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .product-search-input-wrapper,
+.dark .category-search-input-wrapper,
+.dark .order-search-input-wrapper,
+.dark .brand-search-input-wrapper,
+.dark .unified-search-input-wrapper {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+.dark .product-search-input,
+.dark .category-search-input,
+.dark .order-search-input,
+.dark .brand-search-input,
+.dark .unified-search-input {
+  background-color: #111827;
+  color: white;
+  border-color: #374151;
+}
+
+.dark .product-search-input:focus,
+.dark .category-search-input:focus,
+.dark .order-search-input:focus,
+.dark .brand-search-input:focus,
+.dark .unified-search-input:focus {
+  border-color: #e8521a;
+  box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.3);
+}
+
+.dark .product-search-select,
+.dark .category-search-select,
+.dark .order-search-select,
+.dark .brand-search-select,
+.dark .unified-search-select {
+  background-color: #1f2937;
+  color: white;
+  border-color: #374151;
+}
+
+.dark .product-search-icon,
+.dark .category-search-icon,
+.dark .order-search-icon,
+.dark .brand-search-icon,
+.dark .unified-search-icon {
+  color: #9ca3af;
+}
+
 .dark .all-cards,
 .dark .product-table,
 .dark .brand-table,
@@ -867,6 +930,13 @@
   cursor: pointer;
   text-align: center;
 }
+.dark .pagniation button {
+  background-color: #e8521a;
+  color: white;
+}
+.dark .pagniation button:hover {
+  background-color: #dc4a1a;
+}
 /* /============================================product table =333333333340939349-------------============ */
 .product-table {
   height: 450px;
@@ -1024,6 +1094,9 @@
   padding: 20px;
   overflow-y: auto;
 }
+.dark .viewproduct {
+  background-color: rgba(0, 0, 0, 0.7);
+}
 .viewdiv {
   margin-top: 20px;
 }
@@ -1033,6 +1106,12 @@
   max-width: 600px;
   padding: 20px;
   margin: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.dark .view {
+  background-color: #1f2937;
+  color: white;
 }
 .viewdiv div {
   padding: 10px 20px;
@@ -1044,6 +1123,9 @@
   height: 300px;
   background-color: #ffffff;
   border-radius: 10px;
+}
+.dark .viewdata div {
+  background-color: #374151;
 }
 .viewdata div img {
   height: 240px;
@@ -1061,9 +1143,16 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.dark .viewdata div:nth-child(2) p {
+  border-color: #4b5563;
+}
 .dark .viewdata p,
 .viewdata span {
   color: #374151;
+}
+.dark .viewdata p,
+.dark .viewdata span {
+  color: #d1d5db;
 }
 .viewdata div:nth-child(2) p span {
   font-weight: bolder;
@@ -1071,11 +1160,14 @@
 .viewdata div:nth-child(2) {
   padding: 10px;
 }
-.varintview tbody tr td {
+.dark .varintview tbody tr td {
   color: #e5e7eb;
 }
 .varintview > tbody > tr:hover {
   background-color: none;
+}
+.dark .varintview > tbody > tr:hover {
+  background-color: #4b5563;
 }
 
 /* ======================================================brand table======================= */
