@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "https://categoryapi-oluc.onrender.com/api",
+  baseURL: "/api",
   withCredentials: true,
 });
 export const brandpost = (data) =>
