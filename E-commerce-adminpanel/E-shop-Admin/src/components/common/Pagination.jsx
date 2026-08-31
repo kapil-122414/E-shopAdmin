@@ -1,12 +1,29 @@
 import React from "react";
 
 const Pagination = ({ page, setpage, totalpage }) => {
+  const btnStyle = {
+    backgroundColor: "var(--primary-color)",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    padding: "8px 16px",
+    cursor: "pointer",
+    transition: "background-color 0.2s",
+  };
+  const btnHoverStyle = {
+    ...btnStyle,
+    backgroundColor: "var(--primary-hover)",
+  };
+
   return (
     <div className="pagination flex justify-center gap-4 py-4">
       <button 
         disabled={page === 1} 
         onClick={() => setpage(page - 1)}
-        className="px-4 py-2 bg-[#e8521a] text-white rounded-lg hover:bg-[#dc4a1a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        style={btnStyle}
+        onMouseEnter={(e) => Object.assign(e.target.style, btnHoverStyle)}
+        onMouseLeave={(e) => Object.assign(e.target.style, btnStyle)}
+        className="disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Prev
       </button>
@@ -16,7 +33,9 @@ const Pagination = ({ page, setpage, totalpage }) => {
       {page < totalpage && (
         <button 
           onClick={() => setpage(page + 1)}
-          className="px-4 py-2 bg-[#e8521a] text-white rounded-lg hover:bg-[#dc4a1a] transition-colors"
+          style={btnStyle}
+          onMouseEnter={(e) => Object.assign(e.target.style, btnHoverStyle)}
+          onMouseLeave={(e) => Object.assign(e.target.style, btnStyle)}
         >
           Next
         </button>

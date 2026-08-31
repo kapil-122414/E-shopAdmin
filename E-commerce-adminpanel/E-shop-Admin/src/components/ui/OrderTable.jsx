@@ -81,7 +81,7 @@ const ordertable = ({ showdata, search, setsearch, status, setstatus, loading })
                 <td>
                   <div className="flex gap-1.5">
                     <FiEye />
-                    <FiEdit className="text-[#E8521A]" />
+                    <FiEdit style={{ color: "var(--primary-text)" }} />
                   </div>
                 </td>
               </tr>

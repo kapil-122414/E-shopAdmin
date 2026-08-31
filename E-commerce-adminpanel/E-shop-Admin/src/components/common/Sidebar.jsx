@@ -36,7 +36,7 @@ const Sidebar = ({
   const location = useLocation();
   const menuClass = (path) => {
     return location.pathname === path
-      ? "bg-[#E8521A] text-white p-3 rounded-lg flex items-center gap-2"
+      ? "bg-[var(--primary-color)] text-white p-3 rounded-lg flex items-center gap-2"
       : "p-3 flex items-center gap-2";
   };
 
