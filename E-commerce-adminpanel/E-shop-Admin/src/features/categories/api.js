@@ -20,3 +20,5 @@ export const categorydelete = (id) => {
 export const categoryupdate = (id, data) => {
   return api.patch(`/category/${id}`, data);
 };
+export const getProductCountsByCategory = () =>
+  api.get("/product/count-by-category");

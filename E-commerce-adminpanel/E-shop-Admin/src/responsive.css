@@ -2,20 +2,24 @@
 
 /* Responsive visibility classes */
 .desktop-only {
-  display: block !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-only {
-  display: none !important;
+  display: none;
 }
 
 @media (max-width: 1024px) {
   .desktop-only {
-    display: none !important;
+    display: none;
   }
 
   .mobile-only {
-    display: block !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .side-bar {
@@ -77,25 +81,6 @@
 
   .nav-search-wrapper {
     max-width: 150px;
-  }
-}
-
-@media (min-width: 1025px) {
-  .mobile-only {
-    display: none !important;
-  }
-
-  .desktop-only {
-    display: block !important;
-  }
-
-  .side-bar {
-    transform: none;
-    left: 0;
-  }
-
-  .mobile-menu-btn {
-    display: none;
   }
 }
 

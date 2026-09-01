@@ -5,6 +5,7 @@ import {
   categorypost,
   categorydelete,
   categoryupdate,
+  getProductCountsByCategory,
 } from "./api";
 const useCategories = () => {
   const [from, setFrom] = useState(false);
@@ -21,6 +22,20 @@ const useCategories = () => {
     status: "",
     Img: "",
   });
+  const [productCounts, setProductCounts] = useState({});
+
+  const fetchProductCounts = async () => {
+    try {
+      const res = await getProductCountsByCategory();
+      const countsMap = {};
+      res.data.data.forEach((item) => {
+        countsMap[item._id] = item.count;
+      });
+      setProductCounts(countsMap);
+    } catch (error) {
+      console.log("Error fetching product counts:", error);
+    }
+  };
 
   const getdata = async () => {
     try {
@@ -30,6 +45,7 @@ const useCategories = () => {
       setcategoryies(res.data.data);
       settotalpage(res.data.totalPages);
       console.log(res.data.data);
+      await fetchProductCounts();
     } catch (error) {
       console.log();
     } finally {
@@ -116,6 +132,7 @@ const useCategories = () => {
     setSearch,
     status,
     setstatus,
+    productCounts,
   };
 };
 

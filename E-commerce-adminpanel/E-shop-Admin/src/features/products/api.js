@@ -3,9 +3,9 @@ const api = axios.create({
   baseURL: "/api",
   withCredentials: true,
 });
-export const categorys = () => api.get("/category");
+export const categorys = () => api.get("/category/all");
 
-export const brand = () => api.get("/brand");
+export const brand = () => api.get("/brand/all");
 export const createDescription = (data) =>
   api.post("/generate-description", data);
 export const postproduct = (data) => {

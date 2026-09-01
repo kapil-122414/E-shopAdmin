@@ -32,6 +32,16 @@ const Sidebar = ({
     console.log("remove token");
     setIslogin(false);
   };
+
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1025);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth <= 1024;
   const navigate = useNavigate();
   const location = useLocation();
   const menuClass = (path) => {
@@ -108,6 +118,20 @@ const Sidebar = ({
             <h3>Setting</h3>
           </div>
         </div>
+
+        {isMobile && (
+          <div className="sidebar-user-profile mobile-only p-3 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-3 cursor-pointer" onClick={onClose}>
+              <div className="userimg w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <FaUserCircle size={24} className="text-gray-600 dark:text-gray-400" />
+              </div>
+              <div className="userdetails flex-1 min-w-0">
+                <h6 className="font-medium truncate">kapil</h6>
+                <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{formData.Email}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div onClick={logout} className="logout">
           <FaSignOutAlt />

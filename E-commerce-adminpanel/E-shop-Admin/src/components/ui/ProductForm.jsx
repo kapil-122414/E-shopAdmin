@@ -232,7 +232,7 @@ const productfrom = ({
               >
                 <option value="">Select Category</option>
 
-                {category.map((item) => (
+                {category?.map((item) => (
                   <option key={item._id} value={item._id}>
                     {item.Categoryname}
                   </option>
@@ -246,7 +246,7 @@ const productfrom = ({
               >
                 <option value="">Select Brand</option>
 
-                {brands.map((item) => (
+                {brands?.map((item) => (
                   <option key={item._id} value={item._id}>
                     {item.name}
                   </option>

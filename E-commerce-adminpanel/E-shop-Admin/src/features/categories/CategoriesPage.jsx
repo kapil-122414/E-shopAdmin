@@ -25,6 +25,7 @@ const Categories = () => {
     setSearch,
     status,
     setstatus,
+    productCounts,
   } = useCategories();
 
   return (
@@ -98,6 +99,7 @@ const Categories = () => {
                   setFormdata={setFormdata}
                   editdata={editdata}
                   seteditdata={seteditdata}
+                  productCount={productCounts[item._id] || 0}
                 />
               </div>
             ))

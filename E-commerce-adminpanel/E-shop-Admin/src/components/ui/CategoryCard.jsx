@@ -11,6 +11,7 @@ const Categorycard = ({
   setFormdata,
   editdata,
   seteditdata,
+  productCount = 0,
    
 }) => {
   return (
@@ -18,7 +19,7 @@ const Categorycard = ({
       <img src={item.Img} />
       <div className="card-all">
         <h3 className="text-1xl ">{item.Categoryname}</h3>
-        <h6 className="text-[#717182] text-sm">product 300</h6>
+        <h6 className="text-[#717182] text-sm">product {productCount}</h6>
       </div>
       <div className="editdiv">
         <button

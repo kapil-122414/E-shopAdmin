@@ -114,18 +114,20 @@ const useProducts = () => {
   const categoryies = async () => {
     try {
       const res = await categorys();
-      setCategory(res.data.data);
+      console.log("Categories response:", res.data);
+      setCategory(res.data);
     } catch (error) {
-      console.log(error);
+      console.log("Category fetch error:", error.response?.data || error.message);
     }
   };
 
   const branddata = async () => {
     try {
       const res = await brand();
-      setBrand(res.data.data);
+      console.log("Brands response:", res.data);
+      setBrand(res.data);
     } catch (error) {
-      console.log(error);
+      console.log("Brand fetch error:", error.response?.data || error.message);
     }
   };
 
@@ -230,13 +232,13 @@ const useProducts = () => {
         mrp: product.mrp,
         discount: product.discount,
         stock: product.stock,
-        category: product.categoryId._id,
-        brand: product.brand._id,
+        category: product.categoryId?._id || "",
+        brand: product.brand?._id || "",
         status: product.status,
       });
-      setVariants(product.variant);
+      setVariants(product.variant || []);
 
-      setImage(product.Img.url);
+      setImage(product.Img?.url || null);
 
       setfrom(true);
     } catch (error) {
@@ -289,6 +291,9 @@ const useProducts = () => {
   useEffect(() => {
     categoryies();
     branddata();
+  }, []);
+
+  useEffect(() => {
     getproduct();
   }, [page, search, status]);
   return {
