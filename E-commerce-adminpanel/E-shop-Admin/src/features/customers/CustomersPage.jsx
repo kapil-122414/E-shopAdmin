@@ -124,9 +124,9 @@ const CustomersPage = ({ search: initialSearch = "" }) => {
           <h3>Customers</h3>
           <p className="text-[#717182] text-sm">Manage your customers</p>
         </div>
-        <div className="relative max-w-md w-full">
+        <div className="customer-search-input-wrapper relative max-w-md w-full">
           <FaSearch
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            className="customer-search-icon absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
             size={18}
           />
           <input
@@ -134,7 +134,7 @@ const CustomersPage = ({ search: initialSearch = "" }) => {
             placeholder="Search customers by email..."
             value={search}
             onChange={handleSearch}
-            className="w-full  placeholder-gray-400 "
+            className="customer-search-input w-full pl-10 pr-4 py-2 placeholder-gray-400 border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E8521A]/20 focus:border-[#E8521A]"
           />
         </div>
       </div>

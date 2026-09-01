@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
+import LoginForm from "../ui/LoginForm";
 import {
   FaTachometerAlt,
   FaBox,
@@ -22,7 +23,11 @@ const Sidebar = ({
   search, 
   setSearch,
   isOpen,
-  onClose 
+  onClose,
+  editfrom,
+  setEditfrom,
+  setFormData,
+  register
 }) => {
   const isDesktop = typeof window !== 'undefined' && window.innerWidth > 1024;
   const shouldShow = isDesktop || isOpen;
@@ -48,6 +53,13 @@ const Sidebar = ({
     return location.pathname === path
       ? "bg-[var(--primary-color)] text-white p-3 rounded-lg flex items-center gap-2"
       : "p-3 flex items-center gap-2";
+  };
+
+  const handleProfileClick = () => {
+    if (isMobile) {
+      setEditfrom(true);
+      onClose();
+    }
   };
 
   return (
@@ -121,13 +133,13 @@ const Sidebar = ({
 
         {isMobile && (
           <div className="sidebar-user-profile mobile-only p-3 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex items-center gap-3 cursor-pointer" onClick={onClose}>
-              <div className="userimg w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <FaUserCircle size={24} className="text-gray-600 dark:text-gray-400" />
+            <div className="sidebar-user-info cursor-pointer" onClick={handleProfileClick}>
+              <div className="userimg w-10 h-10 rounded-full bg-[#E8521A]/10 flex items-center justify-center">
+                <FaUserCircle size={24} className="text-[#E8521A]" />
               </div>
               <div className="userdetails flex-1 min-w-0">
-                <h6 className="font-medium truncate">kapil</h6>
-                <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{formData.Email}</p>
+                <h6 className="font-medium truncate text-white dark:text-white">kapil</h6>
+                <p className="text-sm text-gray-400 dark:text-gray-400 truncate">{formData.Email}</p>
               </div>
             </div>
           </div>
@@ -138,6 +150,16 @@ const Sidebar = ({
           <h3>logout</h3>
         </div>
       </div>
+
+      {isMobile && editfrom && (
+        <LoginForm
+          editfrom={editfrom}
+          setEditfrom={setEditfrom}
+          formData={formData}
+          setFormData={setFormData}
+          register={register}
+        />
+      )}
     </>
   );
 };

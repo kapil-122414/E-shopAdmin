@@ -30,6 +30,10 @@ const App = () => {
             islogin={islogin}
             isOpen={sidebarOpen}
             onClose={() => setSidebarOpen(false)}
+            editfrom={editfrom}
+            setEditfrom={setEditfrom}
+            setFormData={setFormData}
+            register={register}
           />
           <div className="main-content">
             <Navbar
