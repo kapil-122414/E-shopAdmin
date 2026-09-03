@@ -106,8 +106,8 @@ const productfrom = ({
         <p className="text-[#717182] text-sm">
           Fill in the details to create a new product
         </p>
-        <div className="flex flex-wrap gap-20 complete-from ">
-          <div className="from-left  ">
+        <div className="complete-from">
+          <div className="from-left">
             <div>
               <h5>Basic Information</h5>
               <label>Product Name</label>
@@ -142,7 +142,6 @@ const productfrom = ({
                 value={fromdata.description}
                 onChange={onhandchange}
                 placeholder="Enter product description"
-                className="border border-gray-300 rounded-lg p-10 outline-none resize-none"
                 rows="4"
               />
               <label>Short Description</label>

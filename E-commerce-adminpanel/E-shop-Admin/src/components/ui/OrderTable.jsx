@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Pagination from "../common/Pagination";
 import { FiEye, FiEdit, FiSearch } from "react-icons/fi";
 import { FaSpinner } from "react-icons/fa";
-const ordertable = ({ showdata, search, setsearch, status, setstatus, loading }) => {
+import EditOrder from "./EditOrder";
+
+const ordertable = ({ showdata, search, setsearch, status, setstatus, loading, onView, onRefresh }) => {
+  const [editOrder, setEditOrder] = useState(null);
+
+  const handleEdit = (order) => {
+    setEditOrder(order);
+  };
+
+  const handleEditClose = () => {
+    setEditOrder(null);
+  };
+
+  const handleEditSuccess = () => {
+    if (onRefresh) onRefresh();
+  };
+
   return (
     <div className="order-table">
       <div className="order-search">
@@ -80,8 +96,8 @@ const ordertable = ({ showdata, search, setsearch, status, setstatus, loading })
                 <td>{new Date(item.createdAt).toLocaleDateString()}</td>
                 <td>
                   <div className="flex gap-1.5">
-                    <FiEye />
-                    <FiEdit style={{ color: "var(--primary-text)" }} />
+                    <FiEye onClick={() => onView?.(item._id)} style={{ cursor: "pointer" }} />
+                    <FiEdit onClick={() => handleEdit(item)} style={{ color: "var(--primary-text)", cursor: "pointer" }} />
                   </div>
                 </td>
               </tr>
@@ -93,6 +109,12 @@ const ordertable = ({ showdata, search, setsearch, status, setstatus, loading })
           <Pagination />
         </div>
       </div>
+
+      <EditOrder
+        order={editOrder}
+        onClose={handleEditClose}
+        onSuccess={handleEditSuccess}
+      />
     </div>
   );
 };
