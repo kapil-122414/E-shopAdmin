@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { getCustomers, getCustomerById } from "../products/api";
+import { getCustomers, getCustomerById, updateCustomer, deleteCustomer } from "../products/api";
 import {
   FaSearch,
   FaEye,
@@ -29,6 +29,7 @@ const CustomersPage = ({ search: initialSearch = "" }) => {
   });
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   const fetchCustomers = useCallback(async () => {
     try {
@@ -79,6 +80,38 @@ const CustomersPage = ({ search: initialSearch = "" }) => {
     }
   };
 
+  const handleEditCustomer = (customer) => {
+    // For now, just show an alert - you can replace with a modal/form
+    const newEmail = prompt("Enter new email:", customer.Email);
+    if (newEmail && newEmail !== customer.Email) {
+      updateCustomer(customer._id, { Email: newEmail })
+        .then(() => {
+          fetchCustomers();
+          alert("Customer updated");
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Failed to update");
+        });
+    }
+  };
+
+  const handleDeleteCustomer = (customer) => {
+    if (window.confirm(`Delete customer ${customer.Email}? This cannot be undone.`)) {
+      setDeletingId(customer._id);
+      deleteCustomer(customer._id)
+        .then(() => {
+          fetchCustomers();
+          setDeletingId(null);
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Failed to delete");
+          setDeletingId(null);
+        });
+    }
+  };
+
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -124,18 +157,20 @@ const CustomersPage = ({ search: initialSearch = "" }) => {
           <h3>Customers</h3>
           <p className="text-[#717182] text-sm">Manage your customers</p>
         </div>
-        <div className="customer-search-input-wrapper relative max-w-md w-full">
-          <FaSearch
-            className="customer-search-icon absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-            size={18}
-          />
-          <input
-            type="text"
-            placeholder="Search customers by email..."
-            value={search}
-            onChange={handleSearch}
-            className="customer-search-input w-full pl-10 pr-4 py-2 placeholder-gray-400 border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E8521A]/20 focus:border-[#E8521A]"
-          />
+        <div className="unified-search">
+          <div className="unified-search-input-wrapper">
+            <FaSearch
+              className="unified-search-icon"
+              size={18}
+            />
+            <input
+              type="text"
+              placeholder="Search customers by email..."
+              value={search}
+              onChange={handleSearch}
+              className="unified-search-input"
+            />
+          </div>
         </div>
       </div>
 
@@ -224,16 +259,23 @@ const CustomersPage = ({ search: initialSearch = "" }) => {
                           <FaEye size={18} />
                         </button>
                         <button
+                          onClick={() => handleEditCustomer(customer)}
                           className="p-2 text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
                           title="Edit"
                         >
                           <FaEdit size={18} />
                         </button>
                         <button
-                          className="p-2 text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors"
+                          onClick={() => handleDeleteCustomer(customer)}
+                          disabled={deletingId === customer._id}
+                          className="p-2 text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           title="Delete"
                         >
-                          <FaTrash size={18} />
+                          {deletingId === customer._id ? (
+                            <span className="animate-spin">⟳</span>
+                          ) : (
+                            <FaTrash size={18} />
+                          )}
                         </button>
                       </div>
                     </td>

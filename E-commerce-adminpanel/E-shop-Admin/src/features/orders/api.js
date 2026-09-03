@@ -3,10 +3,12 @@ const api = axios.create({
   baseURL: "/api",
   withCredentials: true,
 });
-export const getapi = (search = "", status) =>
-  api.get(
-    `/admin/order?page=1&limit=4&search=${encodeURIComponent(search)}&status=${encodeURIComponent(status)}`,
-  );
+export const getapi = (search = "", status, page = 1, limit = 10, sort = "-createdAt", startDate, endDate) => {
+  let url = `/admin/order?page=${page}&limit=${limit}&search=${encodeURIComponent(search)}&status=${encodeURIComponent(status)}&sort=${encodeURIComponent(sort)}`;
+  if (startDate) url += `&startDate=${encodeURIComponent(startDate)}`;
+  if (endDate) url += `&endDate=${encodeURIComponent(endDate)}`;
+  return api.get(url);
+};
 
 export const getOrderById = (id) =>
   api.get(`/admin/order/${id}`);

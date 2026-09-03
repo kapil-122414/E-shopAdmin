@@ -4,7 +4,7 @@ import { FiEye, FiEdit, FiSearch } from "react-icons/fi";
 import { FaSpinner } from "react-icons/fa";
 import EditOrder from "./EditOrder";
 
-const ordertable = ({ showdata, search, setsearch, status, setstatus, loading, onView, onRefresh }) => {
+const ordertable = ({ showdata, search, setsearch, status, setstatus, loading, onView, onRefresh, page, setpage, totalPages }) => {
   const [editOrder, setEditOrder] = useState(null);
 
   const handleEdit = (order) => {
@@ -106,7 +106,7 @@ const ordertable = ({ showdata, search, setsearch, status, setstatus, loading, o
           </tbody>
         </table>
         <div>
-          <Pagination />
+          <Pagination page={page} setpage={setpage} totalpage={totalPages} />
         </div>
       </div>
 

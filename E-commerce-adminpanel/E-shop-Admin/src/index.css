@@ -532,13 +532,13 @@ color: var(--primary-text);
 .dark .unified-search {
   background-color: #1f2937;
   border-color: #374151;
+  color: white;
 }
 
 .dark .product-search-input-wrapper,
 .dark .category-search-input-wrapper,
 .dark .order-search-input-wrapper,
-.dark .brand-search-input-wrapper,
-.dark .unified-search-input-wrapper {
+.dark .brand-search-input-wrapper {
   background-color: #111827;
   border-color: #374151;
 }
@@ -548,9 +548,9 @@ color: var(--primary-text);
 .dark .order-search-input,
 .dark .brand-search-input,
 .dark .unified-search-input {
-  background-color: #111827;
   color: white;
   border-color: #374151;
+  background: transparent;
 }
 
 .dark .product-search-input:focus,
@@ -581,11 +581,11 @@ color: var(--primary-text);
 
 .dark .all-cards,
 .dark .product-table,
-.dark .brand-table,
-.dark .order-table {
-  background-color: #455264;
-  color: white;
-}
+  .dark .brand-table,
+  .dark .order-table {
+    background-color: #1f2937;
+    color: white;
+  }
 .dark .category-cards {
   background-color: #374151;
   color: white;
@@ -754,22 +754,18 @@ color: var(--primary-text);
 }
 .unified-search-input {
   width: 100%;
-  height: 44px;
-  padding: 0 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 0;
   outline: none;
   font-size: 14px;
   box-sizing: border-box;
-  background: #f9fafb;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+  background: transparent;
 }
 .unified-search-input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.1);
-  background: white;
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 .unified-search-select {
   width: 30%;
@@ -1034,47 +1030,83 @@ color: var(--primary-text);
 }
 
 .product-table thead,
-.brand-table thead,
-.order-table thead {
-  background: #f9fafb;
-}
+  .brand-table thead,
+  .order-table thead {
+    background: #f9fafb;
+  }
+  .dark .product-table thead,
+  .dark .brand-table thead,
+  .dark .order-table thead {
+    background: #374151;
+  }
 
-.product-table th,
-.brand-table th,
-.order-table th {
-  text-align: left;
-  padding: 14px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #717182;
-  border-bottom: 1px solid #e5e7eb;
-}
-.dark span,
-.dark .darks {
-  color: #e5e7eb;
-}
+  .product-table th,
+  .brand-table th,
+  .order-table th {
+    text-align: left;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #717182;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .dark .product-table th,
+  .dark .brand-table th,
+  .dark .order-table th {
+    color: #d1d5db;
+    border-bottom-color: #4b5563;
+  }
+  .dark span,
+  .dark .darks {
+    color: #e5e7eb;
+  }
 
-.product-table td,
-.order-table td,
-.brand-table td {
-  padding: 10px;
-  font-size: 14px;
+  .product-table td,
+  .order-table td,
+  .brand-table td {
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1f2937;
+  }
+  .product-table td p,
+  .order-table td p,
+  .brand-table td p {
+    margin: 0;
+    color: inherit;
+  }
+  .dark .product-table td,
+  .dark .order-table td,
+  .dark .brand-table td {
+    border-bottom-color: #374151;
+    color: #e5e7eb;
+  }
 
-  border-bottom: 1px solid #e5e7eb;
-}
+  .dark .product-table table,
+  .dark .order-table table,
+  .dark .brand-table table {
+    background-color: #1f2937;
+    color: white;
+  }
+  
+  .product-table,
+  .order-table,
+  .brand-table {
+    color: #1f2937;
+  }
 
-.product-table > tbody > tr:hover,
-.brand-table tbody tr:hover,
-.order-table tbody tr:hover {
-  background: #f9fafb;
-  transition: 0.2s;
-}
-.dark .product-table tbody tr:hover,
-.brand-table tbody tr:hover,
-.dark .order-table tbody tr:hover {
-  background: #717182;
-  transition: 0.2s;
-}
+  .product-table > tbody > tr:hover,
+  .brand-table tbody tr:hover,
+  .order-table tbody tr:hover {
+    background: #f9fafb;
+    transition: 0.2s;
+  }
+  .dark .product-table tbody tr:hover,
+  .dark .brand-table tbody tr:hover,
+  .dark .order-table tbody tr:hover {
+    background: #374151;
+    transition: 0.2s;
+  }
 
 /* dfdsssssssssssssssssssssssssssssssfdsssssssssssssssssssssssssssssssss view ----------------------------- */
 .view {
@@ -1890,6 +1922,95 @@ color: var(--primary-text);
 
 .order-header .export-btn:hover {
   background-color: #dc4a1a;
+}
+
+.order-header .export-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.order-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.order-sort-select {
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+  color: #1f2937;
+  cursor: pointer;
+  min-width: 180px;
+  transition: border-color 0.2s;
+}
+.order-sort-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.1);
+}
+.dark .order-sort-select {
+  background: #1f2937;
+  color: white;
+  border-color: #374151;
+}
+
+.order-date-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.order-date-input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+  color: #1f2937;
+  min-width: 160px;
+  transition: border-color 0.2s;
+}
+.order-date-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.1);
+}
+.dark .order-date-input {
+  background: #1f2937;
+  color: white;
+  border-color: #374151;
+}
+.order-date-filter span {
+  color: #6b7280;
+  font-size: 13px;
+}
+.dark .order-date-filter span {
+  color: #9ca3af;
+}
+.order-date-clear {
+  padding: 10px 14px;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.order-date-clear:hover {
+  background: #e5e7eb;
+}
+.dark .order-date-clear {
+  background: #374151;
+  color: #d1d5db;
+  border-color: #4b5563;
+}
+.dark .order-date-clear:hover {
+  background: #4b5563;
 }
 
 .order-search {
@@ -3108,14 +3229,12 @@ color: var(--primary-text);
   color: #fca5a5;
 }
 
-.status-badge.low-stock,
-.status-badge["low stock"] {
+.status-badge.low-stock {
   background: #fef3c7;
   color: #92400e;
 }
 
-.dark .status-badge.low-stock,
-.dark .status-badge["low stock"] {
+.dark .status-badge.low-stock {
   background: #78350f;
   color: #fcd34d;
 }
