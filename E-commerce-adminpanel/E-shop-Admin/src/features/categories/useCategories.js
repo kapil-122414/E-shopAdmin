@@ -7,7 +7,7 @@ import {
   categoryupdate,
   getProductCountsByCategory,
 } from "./api";
-const useCategories = () => {
+const useCategories = (globalSearch = "") => {
   const [from, setFrom] = useState(false);
   const [categoryies, setcategoryies] = useState([]);
   const [editdata, seteditdata] = useState(null);
@@ -16,6 +16,14 @@ const useCategories = () => {
   const [page, setpage] = useState(1);
   const [search, setSearch] = useState("");
   const [status, setstatus] = useState("");
+
+  // Sync with globalSearch only when it has a value (for initial load from global search)
+  // Don't clear local search when globalSearch becomes empty (navbar clears after navigation)
+  useEffect(() => {
+    if (globalSearch && globalSearch.trim().length >= 2) {
+      setSearch(globalSearch);
+    }
+  }, [globalSearch]);
   const [formdata, setFormdata] = useState({
     cartegoryname: "",
     slug: "",

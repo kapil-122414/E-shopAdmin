@@ -12,7 +12,7 @@ import {
   FaSortDown,
 } from "react-icons/fa";
 
-const CustomersPage = ({ search: initialSearch = "" }) => {
+const CustomersPage = ({ search: globalSearch = "" }) => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,7 +22,15 @@ const CustomersPage = ({ search: initialSearch = "" }) => {
     totalCustomers: 0,
     limit: 10,
   });
-  const [search, setSearch] = useState(initialSearch);
+  const [search, setSearch] = useState(globalSearch);
+
+  // Sync with globalSearch only when it has a value (for initial load from global search)
+  // Don't clear local search when globalSearch becomes empty (navbar clears after navigation)
+  useEffect(() => {
+    if (globalSearch && globalSearch.trim().length >= 2) {
+      setSearch(globalSearch);
+    }
+  }, [globalSearch]);
   const [sortConfig, setSortConfig] = useState({
     key: "createdAt",
     order: "desc",

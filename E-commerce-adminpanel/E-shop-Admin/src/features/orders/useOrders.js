@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 import { getapi } from "./api";
-const useOrders = () => {
+const useOrders = (globalSearch = "") => {
   const [showdata, setshowdata] = useState([]);
   const [search, setsearch] = useState("");
   const [status, setstatus] = useState("");
+
+  // Sync with globalSearch only when it has a value (for initial load from global search)
+  // Don't clear local search when globalSearch becomes empty (navbar clears after navigation)
+  useEffect(() => {
+    if (globalSearch && globalSearch.trim().length >= 2) {
+      setsearch(globalSearch);
+    }
+  }, [globalSearch]);
   const [loading, setloading] = useState(false);
   const [page, setpage] = useState(1);
   const [totalPages, settotalPages] = useState(1);

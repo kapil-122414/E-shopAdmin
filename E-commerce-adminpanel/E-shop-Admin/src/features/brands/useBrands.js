@@ -7,7 +7,7 @@ import {
   brandupdate,
 } from "./api";
 
-const useBrands = () => {
+const useBrands = (globalSearch = "") => {
   const [form, setform] = useState(false);
   const [image, setimage] = useState(null);
   const [getdata, setgetdata] = useState([]);
@@ -15,6 +15,14 @@ const useBrands = () => {
   const [totalpage, settotalpage] = useState(1);
   const [search, setSearch] = useState("");
   const [page, setpage] = useState(1);
+
+  // Sync with globalSearch only when it has a value (for initial load from global search)
+  // Don't clear local search when globalSearch becomes empty (navbar clears after navigation)
+  useEffect(() => {
+    if (globalSearch && globalSearch.trim().length >= 2) {
+      setSearch(globalSearch);
+    }
+  }, [globalSearch]);
   const [fromdata, setfromdata] = useState({
     name: "",
     status: "",

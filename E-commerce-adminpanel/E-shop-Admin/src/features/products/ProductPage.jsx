@@ -4,7 +4,7 @@ import useProducts from "./useProducts";
 import ProductForm from "../../components/ui/ProductForm";
 import { FaPlus } from "react-icons/fa";
 
-const Product = () => {
+const Product = ({ search: globalSearch = "" }) => {
   const {
     from,
     setfrom,
@@ -45,7 +45,7 @@ const Product = () => {
     setview,
     productview,
     viewdata,
-  } = useProducts();
+  } = useProducts(globalSearch);
 
   return (
     <div className="product-page">

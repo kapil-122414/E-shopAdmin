@@ -1,6 +1,7 @@
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: API_BASE_URL,
   withCredentials: true,
 });
 export const categorys = () => api.get("/category/all");
@@ -44,4 +45,7 @@ export const updateCustomer = (id, data) => {
 };
 export const deleteCustomer = (id) => {
   return api.delete(`/admin/customers/${id}`);
+};
+export const globalSearch = (query, limit = 10) => {
+  return api.get(`/global-search?q=${encodeURIComponent(query)}&limit=${limit}`);
 };

@@ -7,9 +7,9 @@ import { getOrderById, getapi } from "./api";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
-const Orders = () => {
+const Orders = ({ search: globalSearch = "" }) => {
   const { showdata, setshowdata, search, setsearch, status, setstatus, loading, page, setpage, totalPages } =
-    useOrders();
+    useOrders(globalSearch);
   const [viewOrder, setViewOrder] = useState(null);
   const [viewLoading, setViewLoading] = useState(false);
   const [sort, setSort] = useState("-createdAt");

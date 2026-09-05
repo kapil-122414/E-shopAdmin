@@ -4,7 +4,7 @@ import useCategories from "./useCategories";
 import Pagination from "../../components/common/Pagination";
 import CategoryCard from "../../components/ui/CategoryCard";
 import { FaSpinner, FaPlus, FaSearch } from "react-icons/fa";
-const Categories = () => {
+const Categories = ({ search: globalSearch = "" }) => {
   const {
     from,
     setFrom,
@@ -26,7 +26,7 @@ const Categories = () => {
     status,
     setstatus,
     productCounts,
-  } = useCategories();
+  } = useCategories(globalSearch);
 
   return (
     <div className="categories">

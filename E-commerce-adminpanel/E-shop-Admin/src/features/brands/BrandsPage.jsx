@@ -3,7 +3,7 @@ import BrandTable from "../../components/ui/BrandTable";
 import useBrands from "./useBrands";
 import BrandForm from "../../components/ui/BrandForm";
 
-const Brands = () => {
+const Brands = ({ search: globalSearch = "" }) => {
   const {
     form,
     setform,
@@ -29,7 +29,7 @@ const Brands = () => {
     settotalpage,
     search,
     setSearch,
-  } = useBrands();
+  } = useBrands(globalSearch);
   return (
     <>
       <div class="p-2 flex justify-between categoy-head">

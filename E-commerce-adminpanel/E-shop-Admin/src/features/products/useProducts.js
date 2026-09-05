@@ -9,7 +9,7 @@ import {
   productedit,
   getbyid,
 } from "./api";
-const useProducts = () => {
+const useProducts = (globalSearch = "") => {
   const [image, setImage] = useState(null);
   const [from, setfrom] = useState(false);
   const [imageFile, setImageFile] = useState(null);
@@ -46,6 +46,14 @@ const useProducts = () => {
   const [page, setpage] = useState(1);
   const [search, setSearch] = useState("");
   const [status, setstatus] = useState("");
+
+  // Sync with globalSearch only when it has a value (for initial load from global search)
+  // Don't clear local search when globalSearch becomes empty (navbar clears after navigation)
+  useEffect(() => {
+    if (globalSearch && globalSearch.trim().length >= 2) {
+      setSearch(globalSearch);
+    }
+  }, [globalSearch]);
   const [editId, setEditId] = useState(null);
   const addVariant = () => {
     setVariants((prev) => [
